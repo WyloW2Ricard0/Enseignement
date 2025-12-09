@@ -1,0 +1,193 @@
+# =============================================================================
+# requirements.txt — Modèle détaillé et explicatif pour projets Python
+# =============================================================================
+#
+# 📖 QU'EST-CE QUE CE FICHIER ?
+#
+# requirements.txt liste les dépendances Python à installer pour exécuter le projet.
+# Il est utilisé par pip pour installer les packages nécessaires :
+#   pip install -r requirements.txt
+#
+# ✅ AVANTAGES :
+#   - Reproductibilité des environnements
+#   - Facilité d'installation pour nouveaux contributeurs
+#   - Compatible avec CI/CD, Docker, virtualenv, Poetry
+#   - Peut être généré automatiquement (pip freeze)
+#
+# 📚 DOCUMENTATION :
+#   - https://pip.pypa.io/en/stable/user_guide/#requirements-files
+#   - https://docs.python.org/3/tutorial/modules.html#packages
+#   - https://realpython.com/pipenv-guide/
+#
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# 📝 FORMAT DES LIGNES
+# -----------------------------------------------------------------------------
+#
+# - package==version   : version exacte (recommandé pour reproductibilité)
+# - package>=version   : version minimale
+# - package<=version   : version maximale
+# - package~=version   : compatible (PEP 440, ex: ~=1.4.2)
+# - package           : dernière version disponible
+# - package[extra]    : installation avec extras (ex: requests[socks])
+# - -r other.txt      : inclure un autre fichier requirements
+# - --find-links URL  : dépôt custom
+# - --index-url URL   : index PyPI alternatif
+#
+# 💡 Astuce :
+#   - Les commentaires (#) sont ignorés
+#   - Les lignes vides sont ignorées
+#   - Les variables d'environnement ne sont pas supportées
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# 🐍 DÉPENDANCES DE BASE (exemple pour projet web moderne)
+# -----------------------------------------------------------------------------
+
+# Flask — micro-framework web
+Flask==3.0.0           # Serveur web, API REST
+
+# SQLAlchemy — ORM pour bases de données
+SQLAlchemy==2.0.25     # Mapping objets-relationnel
+
+# psycopg2 — connecteur PostgreSQL
+psycopg2-binary==2.9.9 # Connexion à PostgreSQL
+
+# requests — client HTTP
+requests==2.31.0       # Requêtes HTTP, API externes
+
+# python-dotenv — gestion des variables d'environnement
+python-dotenv==1.0.0   # Chargement .env
+
+# gunicorn — serveur WSGI pour production
+# (utiliser en déploiement, pas en dev sous Windows)
+gunicorn==21.2.0       # Serveur WSGI
+
+# -----------------------------------------------------------------------------
+# 🔒 SÉCURITÉ
+# -----------------------------------------------------------------------------
+
+# passlib — gestion des mots de passe
+passlib==1.7.4         # Hashing sécurisé
+
+# cryptography — chiffrement, certificats
+cryptography==41.0.7   # Chiffrement, SSL/TLS
+
+# Flask-CORS — gestion CORS
+Flask-CORS==4.0.0      # Sécurité API
+
+# -----------------------------------------------------------------------------
+# 🧪 TESTS & QUALITÉ
+# -----------------------------------------------------------------------------
+
+# pytest — framework de tests
+pytest==7.4.3          # Tests unitaires
+
+# coverage — mesure de couverture de tests
+coverage==7.3.2        # Couverture code
+
+# flake8 — linter style Python
+flake8==6.1.0          # Vérification PEP8
+
+# black — formatteur automatique
+black==23.11.0         # Formatage code
+
+# mypy — vérification de types
+mypy==1.7.1            # Typage statique
+
+# -----------------------------------------------------------------------------
+# 📦 DÉPENDANCES OPTIONNELLES (commenter si non utilisées)
+# -----------------------------------------------------------------------------
+
+# pandas — analyse de données
+# pandas==2.1.3
+
+# numpy — calcul scientifique
+# numpy==1.26.2
+
+# matplotlib — visualisation
+# matplotlib==3.8.2
+
+# scikit-learn — machine learning
+# scikit-learn==1.3.2
+
+# Pillow — traitement d'images
+# Pillow==10.1.0
+
+# openpyxl — manipulation Excel
+# openpyxl==3.1.2
+
+# -----------------------------------------------------------------------------
+# 🌐 DÉPENDANCES WEB AVANCÉES
+# -----------------------------------------------------------------------------
+
+# fastapi — framework API moderne
+# fastapi==0.104.1
+
+# uvicorn — serveur ASGI pour FastAPI
+# uvicorn==0.24.0.post1
+
+# starlette — toolkit web
+# starlette==0.27.0
+
+# jinja2 — moteur de templates
+Jinja2==3.1.2
+
+# -----------------------------------------------------------------------------
+# 🗄️ BASES DE DONNÉES ALTERNATIVES
+# -----------------------------------------------------------------------------
+
+# pymysql — connecteur MySQL
+# pymysql==1.1.0
+
+# aioredis — client Redis asynchrone
+# aioredis==2.0.1
+
+# mongoengine — ODM MongoDB
+# mongoengine==0.27.0
+
+# -----------------------------------------------------------------------------
+# 🛠️ OUTILS DEVOPS / CI
+# -----------------------------------------------------------------------------
+
+# pip — gestionnaire de paquets Python
+pip==25.3
+
+# pip-audit — audit de sécurité
+pip-audit==2.7.2       # Audit vulnérabilités
+
+# pre-commit — hooks Git
+pre-commit==3.5.0      # Automatisation qualité
+
+# -----------------------------------------------------------------------------
+# 🔗 INCLUSIONS & INDEX ALTERNATIFS
+# -----------------------------------------------------------------------------
+
+# -r requirements-dev.txt   # Inclure dépendances dev
+# --index-url https://pypi.org/simple  # Index PyPI par défaut
+# --find-links ./wheels               # Installer depuis dossier local
+
+# -----------------------------------------------------------------------------
+# 📝 NOTES ET BONNES PRATIQUES
+# -----------------------------------------------------------------------------
+#
+# - Toujours fixer les versions pour reproductibilité (==)
+# - pip freeze > requirements.txt pour générer snapshot exact
+# - requirements.txt = prod, requirements-dev.txt = dev/test
+# - Utiliser virtualenv ou venv pour isoler l'environnement
+# - Ajouter requirements.txt dans MANIFEST.in pour packaging
+# - Mettre à jour régulièrement (pip list --outdated)
+# - Sécurité : pip-audit, dependabot, vérifier CVE
+# - Pour projets complexes : préférer Poetry ou pipenv
+# - Pour wheels locaux : --find-links ./wheels
+# - Pour installation rapide : pip install -r requirements.txt
+# - Pour Docker : COPY requirements.txt puis RUN pip install
+#
+# -----------------------------------------------------------------------------
+#
+# Version de ce fichier : 1.0
+# Dernière mise à jour : 9 décembre 2025
+# Mainteneur : WyloW2Ricard0
+# Licence : CC0 (Domaine Public) — Adaptez librement
+# =============================================================================

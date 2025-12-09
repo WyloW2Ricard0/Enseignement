@@ -1,0 +1,808 @@
+# =============================================================================
+# Docker Compose — Orchestration multi-conteneurs
+# =============================================================================
+#
+# 📖 QU'EST-CE QUE DOCKER COMPOSE ?
+#
+# Docker Compose est un outil pour définir et exécuter des applications Docker
+# multi-conteneurs. Avec Compose, vous utilisez un fichier YAML pour configurer
+# les services de votre application.
+#
+# ✅ AVANTAGES :
+#   - Définition déclarative de l'infrastructure
+#   - Gestion simplifiée des dépendances entre services
+#   - Environnements reproductibles (dev = prod)
+#   - Isolation des services (réseau, volumes)
+#   - Scalabilité facile (docker compose up --scale web=3)
+#
+# 🔧 INSTALLATION :
+#   Docker Desktop (Windows/Mac) : Compose inclus
+#   Linux : sudo apt install docker-compose-plugin
+#   Vérifier : docker compose version
+#
+# 🚀 COMMANDES PRINCIPALES :
+#   docker compose up          # Démarrer tous les services
+#   docker compose up -d       # Démarrer en arrière-plan (detached)
+#   docker compose down        # Arrêter et supprimer conteneurs
+#   docker compose ps          # Lister les services actifs
+#   docker compose logs -f     # Suivre les logs en temps réel
+#   docker compose exec web sh # Exécuter commande dans conteneur
+#   docker compose build       # Construire/reconstruire images
+#   docker compose restart     # Redémarrer services
+#
+# 📍 FICHIERS COMPOSE :
+#   - docker-compose.yml       : Configuration par défaut
+#   - docker-compose.override.yml : Surcharges locales (dev)
+#   - docker-compose.prod.yml  : Configuration production
+#   - .env                     : Variables d'environnement
+#
+# 📚 DOCUMENTATION :
+#   - Docs officielles : https://docs.docker.com/compose/
+#   - Compose file reference : https://docs.docker.com/compose/compose-file/
+#   - Best practices : https://docs.docker.com/develop/dev-best-practices/
+#
+# =============================================================================
+
+# Version de la syntaxe Docker Compose
+# 3.8 : compatible Docker Engine 19.03.0+ (recommandé)
+# Autres versions : 2.x (legacy), 3.9 (latest stable)
+version: '3.8'
+
+# =============================================================================
+# 🌐 RÉSEAUX (Networks)
+# =============================================================================
+#
+# Les réseaux permettent l'isolation et la communication entre conteneurs.
+#
+# TYPES DE RÉSEAUX :
+#   - bridge : réseau par défaut, conteneurs sur même hôte
+#   - host : utilise directement le réseau de l'hôte (performance)
+#   - overlay : multi-hôte (Docker Swarm)
+#   - none : aucun réseau
+#
+# 💡 BONNES PRATIQUES :
+#   - Créer réseaux séparés pour groupes de services (frontend, backend, db)
+#   - Ne jamais exposer directement base de données sur réseau public
+#   - Utiliser DNS intégré : services communiquent via nom (ex: http://api:3000)
+#
+networks:
+  # Réseau frontend : web, nginx, services publics
+  frontend:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: frontend_bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16  # Plage IP personnalisée
+
+  # Réseau backend : API, microservices
+  backend:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: backend_bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.21.0.0/16
+
+  # Réseau database : DB, cache (isolé du public)
+  database:
+    driver: bridge
+    internal: true  # Pas d'accès externe (sécurité)
+    driver_opts:
+      com.docker.network.bridge.name: db_bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/16
+
+# =============================================================================
+# 💾 VOLUMES (Persistent Storage)
+# =============================================================================
+#
+# Les volumes permettent de persister les données au-delà du cycle de vie
+# des conteneurs.
+#
+# TYPES DE VOLUMES :
+#   - Named volumes : gérés par Docker (recommandé pour production)
+#   - Bind mounts : montage dossier hôte (dev, fichiers config)
+#   - tmpfs : mémoire temporaire (pas de persistence)
+#
+# 💡 BONNES PRATIQUES :
+#   - Utiliser volumes nommés pour données critiques (DB, uploads)
+#   - Bind mounts pour code source en développement (hot reload)
+#   - Backup régulier : docker run --rm -v db_data:/data -v $(pwd):/backup alpine tar czf /backup/backup.tar.gz /data
+#
+volumes:
+  # Volume PostgreSQL : données de la base
+  postgres_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./volumes/postgres  # Chemin sur hôte (dev)
+    # Production : utiliser volume Docker natif
+    # driver: local (sans driver_opts)
+
+  # Volume Redis : cache et sessions
+  redis_data:
+    driver: local
+
+  # Volume uploads : fichiers utilisateurs
+  app_uploads:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./volumes/uploads
+
+  # Volume logs : journaux applicatifs
+  app_logs:
+    driver: local
+
+  # Volume Elasticsearch : index de recherche
+  elasticsearch_data:
+    driver: local
+
+# =============================================================================
+# 🐳 SERVICES (Containers)
+# =============================================================================
+#
+# Chaque service représente un conteneur dans l'application.
+#
+# STRUCTURE D'UN SERVICE :
+#   - image/build : source de l'image Docker
+#   - ports : mapping ports hôte:conteneur
+#   - environment : variables d'environnement
+#   - volumes : montage de volumes
+#   - networks : réseaux à rejoindre
+#   - depends_on : dépendances de démarrage
+#   - restart : politique de redémarrage
+#   - healthcheck : vérifications de santé
+#
+services:
+
+  # ===========================================================================
+  # 🗄️ BASE DE DONNÉES — PostgreSQL
+  # ===========================================================================
+  postgres:
+    # Image officielle PostgreSQL (version Alpine = plus légère)
+    image: postgres:16-alpine
+    
+    # Nom personnalisé du conteneur (optionnel mais recommandé)
+    container_name: enseignement_postgres
+    
+    # Politique de redémarrage
+    # - no : jamais redémarrer automatiquement
+    # - always : toujours redémarrer
+    # - on-failure : redémarrer seulement si échec
+    # - unless-stopped : toujours redémarrer sauf si arrêt manuel
+    restart: unless-stopped
+    
+    # Variables d'environnement
+    # 💡 SÉCURITÉ : utiliser fichier .env pour valeurs sensibles
+    environment:
+      # Utilisateur et mot de passe PostgreSQL
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      POSTGRES_DB: ${POSTGRES_DB:-app_database}
+      
+      # Configuration PostgreSQL
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=fr_FR.UTF-8"
+      PGDATA: /var/lib/postgresql/data/pgdata
+      
+      # Timezone
+      TZ: Europe/Paris
+    
+    # Ports exposés (hôte:conteneur)
+    # ⚠️ PRODUCTION : ne pas exposer directement (utiliser réseau interne)
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    
+    # Volumes pour persistence
+    volumes:
+      # Données PostgreSQL (persistence)
+      - postgres_data:/var/lib/postgresql/data
+      
+      # Scripts d'initialisation (exécutés au premier démarrage)
+      - ./init-scripts/postgres:/docker-entrypoint-initdb.d:ro
+      
+      # Configuration personnalisée (optionnel)
+      # - ./postgres.conf:/etc/postgresql/postgresql.conf:ro
+    
+    # Réseaux
+    networks:
+      - database
+      - backend  # Accès depuis services backend
+    
+    # Healthcheck : vérifier que PostgreSQL est prêt
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
+      interval: 10s      # Vérifier toutes les 10 secondes
+      timeout: 5s        # Timeout après 5 secondes
+      retries: 5         # 5 tentatives avant échec
+      start_period: 30s  # Délai initial avant premiers checks
+    
+    # Limites de ressources (optionnel mais recommandé)
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'      # Max 1 CPU
+          memory: 1G       # Max 1 Go RAM
+        reservations:
+          cpus: '0.5'      # Min 0.5 CPU
+          memory: 512M     # Min 512 Mo RAM
+
+  # ===========================================================================
+  # 🔴 CACHE — Redis
+  # ===========================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: enseignement_redis
+    restart: unless-stopped
+    
+    # Commande de démarrage avec configuration
+    command: >
+      redis-server
+      --requirepass ${REDIS_PASSWORD:-changeme}
+      --maxmemory 256mb
+      --maxmemory-policy allkeys-lru
+      --appendonly yes
+      --appendfsync everysec
+    
+    environment:
+      TZ: Europe/Paris
+    
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    
+    volumes:
+      # Persistence Redis (AOF)
+      - redis_data:/data
+      
+      # Configuration personnalisée (optionnel)
+      # - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
+    
+    networks:
+      - backend
+      - database
+    
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 20s
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+  # ===========================================================================
+  # 🔍 RECHERCHE — Elasticsearch
+  # ===========================================================================
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
+    container_name: enseignement_elasticsearch
+    restart: unless-stopped
+    
+    environment:
+      # Mode single-node (dev) ou cluster (prod)
+      discovery.type: single-node
+      
+      # Sécurité (désactiver pour dev, activer pour prod)
+      xpack.security.enabled: false
+      xpack.security.enrollment.enabled: false
+      
+      # Limites mémoire JVM
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+      
+      # Timezone
+      TZ: Europe/Paris
+    
+    ports:
+      - "${ELASTICSEARCH_PORT:-9200}:9200"
+      - "9300:9300"  # Port cluster
+    
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    
+    networks:
+      - backend
+    
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    
+    # Configuration ulimits (requis pour Elasticsearch)
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  # ===========================================================================
+  # 🌐 API BACKEND — Node.js / Python / etc.
+  # ===========================================================================
+  api:
+    # Construction depuis Dockerfile
+    build:
+      context: ../backend  # Chemin vers code source
+      dockerfile: Dockerfile
+      # Arguments de build (disponibles dans Dockerfile via ARG)
+      args:
+        NODE_ENV: ${NODE_ENV:-development}
+        BUILD_DATE: ${BUILD_DATE:-2025-12-09}
+        VERSION: ${APP_VERSION:-1.0.0}
+      # Cache pour accélérer builds
+      cache_from:
+        - enseignement_api:latest
+    
+    # Nom du conteneur
+    container_name: enseignement_api
+    
+    # Image finale (tag après build)
+    image: enseignement_api:latest
+    
+    restart: unless-stopped
+    
+    # Variables d'environnement (depuis .env)
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: 3000
+      
+      # Database
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      
+      # Redis
+      REDIS_URL: redis://:${REDIS_PASSWORD}@redis:6379
+      
+      # Elasticsearch
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      
+      # Security
+      SECRET_KEY: ${SECRET_KEY}
+      JWT_SECRET: ${JWT_SECRET}
+      
+      # CORS
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:5173}
+      
+      # Timezone
+      TZ: Europe/Paris
+    
+    # Fichier .env alternatif (optionnel)
+    # env_file:
+    #   - .env
+    #   - .env.local
+    
+    ports:
+      - "${API_PORT:-3000}:3000"
+    
+    volumes:
+      # Code source (hot reload en dev)
+      - ../backend:/app:cached
+      
+      # node_modules depuis conteneur (éviter conflits)
+      - /app/node_modules
+      
+      # Uploads
+      - app_uploads:/app/uploads
+      
+      # Logs
+      - app_logs:/app/logs
+    
+    networks:
+      - frontend
+      - backend
+      - database
+    
+    # Dépendances : attendre que services soient prêts
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+    
+    # Commande de démarrage (surcharge CMD du Dockerfile)
+    # Dev : nodemon pour hot reload
+    # Prod : node server.js
+    command: npm run dev
+    
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    
+    # Variables d'environnement supplémentaires (debug)
+    # stdin_open: true  # Équivalent docker run -i
+    # tty: true         # Équivalent docker run -t
+
+  # ===========================================================================
+  # ⚛️ FRONTEND — React / Vue / Angular
+  # ===========================================================================
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+      target: development  # Multi-stage : development ou production
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:3000}
+    
+    container_name: enseignement_frontend
+    image: enseignement_frontend:latest
+    restart: unless-stopped
+    
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:3000}
+      TZ: Europe/Paris
+    
+    ports:
+      - "${FRONTEND_PORT:-5173}:5173"
+    
+    volumes:
+      # Code source (hot reload)
+      - ../frontend:/app:cached
+      - /app/node_modules
+      
+      # Build output (production)
+      # - ../frontend/dist:/app/dist
+    
+    networks:
+      - frontend
+    
+    depends_on:
+      - api
+    
+    command: npm run dev -- --host
+    
+    # Pas de healthcheck pour dev server Vite (optionnel)
+    # healthcheck:
+    #   test: ["CMD", "wget", "--spider", "http://localhost:5173"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+
+  # ===========================================================================
+  # 🔄 REVERSE PROXY — Nginx
+  # ===========================================================================
+  nginx:
+    image: nginx:alpine
+    container_name: enseignement_nginx
+    restart: unless-stopped
+    
+    ports:
+      - "${NGINX_HTTP_PORT:-80}:80"
+      - "${NGINX_HTTPS_PORT:-443}:443"
+    
+    volumes:
+      # Configuration Nginx
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      
+      # Certificats SSL/TLS
+      - ./nginx/certs:/etc/nginx/certs:ro
+      
+      # Static files
+      - ../frontend/dist:/usr/share/nginx/html:ro
+      
+      # Logs
+      - ./nginx/logs:/var/log/nginx
+    
+    networks:
+      - frontend
+    
+    depends_on:
+      - api
+      - frontend
+    
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+
+  # ===========================================================================
+  # 📊 MONITORING — Prometheus + Grafana (optionnel)
+  # ===========================================================================
+  
+  # prometheus:
+  #   image: prom/prometheus:latest
+  #   container_name: enseignement_prometheus
+  #   restart: unless-stopped
+  #   
+  #   ports:
+  #     - "9090:9090"
+  #   
+  #   volumes:
+  #     - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+  #     - prometheus_data:/prometheus
+  #   
+  #   command:
+  #     - '--config.file=/etc/prometheus/prometheus.yml'
+  #     - '--storage.tsdb.path=/prometheus'
+  #     - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+  #     - '--web.console.templates=/usr/share/prometheus/consoles'
+  #   
+  #   networks:
+  #     - backend
+
+  # grafana:
+  #   image: grafana/grafana:latest
+  #   container_name: enseignement_grafana
+  #   restart: unless-stopped
+  #   
+  #   ports:
+  #     - "3001:3000"
+  #   
+  #   environment:
+  #     GF_SECURITY_ADMIN_USER: ${GRAFANA_USER:-admin}
+  #     GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin}
+  #     GF_INSTALL_PLUGINS: grafana-clock-panel
+  #   
+  #   volumes:
+  #     - grafana_data:/var/lib/grafana
+  #     - ./grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+  #     - ./grafana/datasources:/etc/grafana/provisioning/datasources:ro
+  #   
+  #   networks:
+  #     - backend
+  #   
+  #   depends_on:
+  #     - prometheus
+
+  # ===========================================================================
+  # 📧 MAIL SERVER — Mailhog (dev) ou SMTP (prod)
+  # ===========================================================================
+  
+  # mailhog:
+  #   image: mailhog/mailhog:latest
+  #   container_name: enseignement_mailhog
+  #   restart: unless-stopped
+  #   
+  #   ports:
+  #     - "1025:1025"  # SMTP
+  #     - "8025:8025"  # Web UI
+  #   
+  #   networks:
+  #     - backend
+
+  # ===========================================================================
+  # 🔧 ADMINER — Interface DB (dev uniquement)
+  # ===========================================================================
+  
+  # adminer:
+  #   image: adminer:latest
+  #   container_name: enseignement_adminer
+  #   restart: unless-stopped
+  #   
+  #   ports:
+  #     - "8080:8080"
+  #   
+  #   environment:
+  #     ADMINER_DEFAULT_SERVER: postgres
+  #     ADMINER_DESIGN: pepa-linha
+  #   
+  #   networks:
+  #     - database
+  #     - frontend
+  #   
+  #   depends_on:
+  #     - postgres
+
+# =============================================================================
+# 📝 NOTES ET BONNES PRATIQUES
+# =============================================================================
+#
+# SÉCURITÉ
+#   ✅ Utiliser .env pour valeurs sensibles (mots de passe, clés API)
+#   ✅ Ajouter .env dans .gitignore
+#   ✅ Créer .env.example avec valeurs factices
+#   ✅ Ne jamais exposer DB directement (réseau internal)
+#   ✅ Utiliser secrets Docker pour production (docker secret create)
+#   ✅ Mettre à jour régulièrement les images (vulnérabilités)
+#   ✅ Scanner images : docker scan <image>
+#   ⚠️ Éviter latest en production (préférer tags versionnés)
+#
+# PERFORMANCE
+#   ✅ Utiliser images Alpine (plus légères)
+#   ✅ Multi-stage builds (réduire taille images)
+#   ✅ Limiter ressources (deploy.resources)
+#   ✅ Utiliser cache Docker (COPY package.json avant COPY .)
+#   ✅ Volumes cached pour bind mounts (macOS)
+#   ✅ Ne pas bind mount node_modules (conflits)
+#   ⚠️ Healthchecks : balance fréquence vs overhead
+#
+# DÉVELOPPEMENT
+#   ✅ Hot reload : bind mount code source
+#   ✅ Override : docker-compose.override.yml (auto-chargé)
+#   ✅ Logs : docker compose logs -f <service>
+#   ✅ Shell : docker compose exec <service> sh
+#   ✅ Rebuild : docker compose up --build
+#   ✅ Clean : docker compose down -v (supprime volumes)
+#   💡 Profils : grouper services optionnels
+#
+# PRODUCTION
+#   ✅ Variables d'environnement : secrets, config externe
+#   ✅ Healthchecks : monitoring automatique
+#   ✅ Restart policies : unless-stopped ou always
+#   ✅ Limites ressources : éviter OOM
+#   ✅ Logging : drivers externes (Fluentd, Splunk)
+#   ✅ Backups : volumes, bases de données
+#   ✅ SSL/TLS : certificats Let's Encrypt
+#   ⚠️ Docker Swarm ou Kubernetes pour orchestration avancée
+#
+# DÉPENDANCES (depends_on)
+#   ⚠️ depends_on attend démarrage, PAS que service soit prêt
+#   ✅ Utiliser condition: service_healthy avec healthcheck
+#   ✅ Implémenter retry logic dans application
+#   💡 Ordre de démarrage : DB → Cache → API → Frontend → Nginx
+#
+# RÉSEAUX
+#   ✅ Isoler services sensibles (DB sur réseau internal)
+#   ✅ Services communiquent via nom (ex: postgres, redis)
+#   ✅ DNS intégré : résolution automatique
+#   💡 Ne pas exposer tous les ports (utiliser nginx comme gateway)
+#
+# VOLUMES
+#   ✅ Named volumes : données persistantes (DB, uploads)
+#   ✅ Bind mounts : développement (hot reload)
+#   ✅ Backup régulier : docker run --rm -v <volume>:/data alpine tar czf
+#   ⚠️ Permissions : attention UID/GID conteneur vs hôte
+#   💡 Volumes driver local vs NFS vs cloud (AWS EFS, Azure Files)
+#
+# COMMANDES AVANCÉES
+#   docker compose up -d --scale api=3  # Scaler service
+#   docker compose config                # Valider syntaxe
+#   docker compose top                   # Voir processus actifs
+#   docker compose images                # Lister images utilisées
+#   docker compose port api 3000         # Port publié
+#   docker compose pause / unpause       # Suspendre/reprendre
+#
+# PROFILS (optionnel, Compose v1.28+)
+#   Grouper services optionnels :
+#     services:
+#       debug:
+#         profiles: ["debug"]
+#   Activer : docker compose --profile debug up
+#
+# EXTENDS (réutilisation configuration)
+#   services:
+#     web:
+#       extends:
+#         file: common.yml
+#         service: app
+#
+# FICHIERS MULTIPLES
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up
+#   Ordre important : derniers fichiers surchargent premiers
+#
+# VARIABLES D'ENVIRONNEMENT
+#   Priorité : 1. Shell, 2. .env, 3. Compose file, 4. Dockerfile
+#   Syntaxe : ${VAR:-default}, ${VAR:?error}, ${VAR}
+#
+# =============================================================================
+#
+# 🔍 DEBUGGING
+#
+# Service ne démarre pas :
+#   1. docker compose logs <service>
+#   2. docker compose exec <service> sh (si running)
+#   3. Vérifier healthcheck : docker compose ps
+#   4. Vérifier réseau : docker compose exec <service> ping <autre_service>
+#   5. Vérifier variables : docker compose config
+#
+# Problèmes réseau :
+#   - Services ne communiquent pas : vérifier networks
+#   - DNS ne résout pas : utiliser noms de services (pas IPs)
+#   - Port déjà utilisé : changer port hôte (8080:80)
+#
+# Problèmes volumes :
+#   - Données perdues : vérifier volumes nommés
+#   - Permissions denied : changer UID/GID ou volumes
+#   - Bind mount vide : vérifier chemins relatifs
+#
+# Problèmes performance :
+#   - Lent sur macOS : utiliser cached/delegated
+#   - OOM : augmenter limites mémoire
+#   - CPU élevé : vérifier healthchecks trop fréquents
+#
+# =============================================================================
+#
+# 📚 RESSOURCES
+#
+# Documentation officielle :
+#   - Docker Compose : https://docs.docker.com/compose/
+#   - Compose file v3 : https://docs.docker.com/compose/compose-file/compose-file-v3/
+#   - CLI reference : https://docs.docker.com/compose/reference/
+#
+# Best practices :
+#   - Docker : https://docs.docker.com/develop/dev-best-practices/
+#   - Production : https://docs.docker.com/compose/production/
+#   - Security : https://docs.docker.com/engine/security/
+#
+# Exemples de projets :
+#   - Awesome Compose : https://github.com/docker/awesome-compose
+#   - Real-world apps : https://github.com/gothinkster/realworld
+#
+# Outils complémentaires :
+#   - Portainer : UI pour gérer conteneurs
+#   - Lazydocker : TUI (terminal UI)
+#   - Dive : analyser taille images
+#   - Hadolint : linter pour Dockerfiles
+#
+# =============================================================================
+#
+# 🚀 UTILISATION RAPIDE
+#
+# Démarrer tous les services :
+#   docker compose up -d
+#
+# Voir les logs :
+#   docker compose logs -f
+#   docker compose logs -f api  # Service spécifique
+#
+# Arrêter :
+#   docker compose down
+#   docker compose down -v  # + supprimer volumes
+#
+# Rebuild après changement code :
+#   docker compose up --build
+#
+# Accéder à un conteneur :
+#   docker compose exec api sh
+#   docker compose exec postgres psql -U postgres
+#
+# Redémarrer un service :
+#   docker compose restart api
+#
+# Voir statut :
+#   docker compose ps
+#
+# =============================================================================
+#
+# Version de ce fichier : 1.0
+# Dernière mise à jour : 9 décembre 2025
+# Mainteneur : WyloW2Ricard0
+# Licence : CC0 (Domaine Public) — Adaptez librement
+#
+# =============================================================================
