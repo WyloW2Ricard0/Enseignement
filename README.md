@@ -32,7 +32,10 @@ RESSOURCES :
 - Shields.io : https://shields.io/ (badges)
 -->
 
+<<<<<<< HEAD
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+=======
+>>>>>>> main
 [![GitHub last commit](https://img.shields.io/github/last-commit/WyloW2Ricard0/Enseignement)](https://github.com/WyloW2Ricard0/Enseignement/commits/master)
 [![GitHub repo size](https://img.shields.io/github/repo-size/WyloW2Ricard0/Enseignement)](https://github.com/WyloW2Ricard0/Enseignement)
 
