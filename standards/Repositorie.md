@@ -109,12 +109,21 @@ Ce cours présente les bonnes pratiques et standards reconnus pour organiser les
     - Fixtures pour développement
     - **⚠️ JAMAIS de données sensibles ou personnelles**
 - [ ] `public/` — Assets publics (web)
-    - Fichiers HTML statiques
-    - Images, icônes, favicon
-    - CSS et fichiers de style
-    - JavaScript côté client
-    - Polices de caractères
-    - Fichiers téléchargeables
+    - asset/                # Fichiers statiques
+        - Images, icônes, favicon
+        - Fichiers téléchargeables
+        - Articles de blog (YYYY-MM-DD-titre.md)
+    - components/           # Composants réutilisables
+    - pages/                # Pages de l'application
+    - hooks/                # Hooks personnalisés
+        - atoms/
+        - molecules/
+        - organismes/
+        - templates/
+        - layouts/
+    - styles/               # Fichiers de style CSS/SCSS, Polices de caractères
+    - App.jsx               # Composant principal
+    - index.jsx             # Point d'entrée
 - [ ] `build/` — Artefacts compilés
     - Code compilé/transcompilé
     - Bundles JavaScript minifiés
