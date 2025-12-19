@@ -1,3 +1,5 @@
+---
+---
 # Standards de structuration de répertoires — Cours pratique
 
 Ce cours présente les bonnes pratiques et standards reconnus pour organiser les répertoires d'un projet logiciel, améliorer la maintenabilité et faciliter la collaboration.
@@ -46,6 +48,7 @@ Ce cours présente les bonnes pratiques et standards reconnus pour organiser les
 - [ ] 🤝 CONTRIBUTING.md
 - [ ] 📋 CHANGELOG.md
 - [ ] **🚫 .gitignore** — Exclusions Git
+- [ ] `config/`
 - [ ] **.editorconfig** — Configuration IDE
     - Indentation (spaces/tabs)
     - Charset (UTF-8)
@@ -107,12 +110,11 @@ Ce cours présente les bonnes pratiques et standards reconnus pour organiser les
     - Fichiers de seed pour tests
     - Datasets de démonstration
     - Fixtures pour développement
+    - Images, icônes, favicon
+    - Fichiers téléchargeables
+    - Articles de blog (YYYY-MM-DD-titre.md)
     - **⚠️ JAMAIS de données sensibles ou personnelles**
 - [ ] `public/` — Assets publics (web)
-    - asset/                # Fichiers statiques
-        - Images, icônes, favicon
-        - Fichiers téléchargeables
-        - Articles de blog (YYYY-MM-DD-titre.md)
     - components/           # Composants réutilisables
     - pages/                # Pages de l'application
     - hooks/                # Hooks personnalisés

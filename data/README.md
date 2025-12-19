@@ -1,3 +1,5 @@
+
+
 # Data — Configuration
 
 Ce dossier contient des fichiers de configuration et des scripts Python utilisés pour automatiser et standardiser les opérations Git dans le projet `Enseignement`.

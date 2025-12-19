@@ -1,3 +1,19 @@
+---
+versions: 1.0.0
+effectiveDate: 2025-12-19
+author: RICHARD Wilfried
+
+title: Arbre de décision — Choisir une licence
+excerpt: Guide visuel pour choisir la licence la plus adaptée à votre projet (code, données, documentation).
+type: reference
+topics:
+   - licence
+   - open source
+   - arbre de décision
+   - legal
+image: "https://upload.wikimedia.org/wikipedia/commons/4/43/Creative_Commons_logo.svg"
+---
+
 # Arbre de décision (format puces) — Choisir une licence
 
 ## GLOSSAIRE
