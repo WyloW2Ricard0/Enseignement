@@ -1,3 +1,20 @@
+---
+versions: 1.0.0
+effectiveDate: 2025-12-19
+author: RICHARD Wilfried
+
+title: GitLens — Guide d'utilisation
+excerpt: Guide complet pour installer, configurer et exploiter l’extension GitLens dans VS Code.
+type: guide
+topics:
+  - git
+  - vscode
+  - extension
+  - gitlens
+image: "https://gitlens.dev/images/gitlens-icon.svg"
+
+---
+
 # GitLens — Guide d'utilisation
 
 GitLens est une extension VS Code puissante qui enrichit l'intégration Git native en affichant des informations contextuelles, l'historique, les auteurs, et bien plus directement dans l'éditeur.
