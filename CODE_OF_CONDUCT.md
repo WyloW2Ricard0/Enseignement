@@ -1,3 +1,4 @@
+
 # Code de Conduite — Contributor Covenant
 
 <!-- 
