@@ -1,77 +1,83 @@
-GUIDE D'UTILISATION DE CE DOCUMENT :
 
-Ce CHANGELOG suit la convention "Keep a Changelog" (https://keepachangelog.com/fr/1.0.0/)
-et adhère au "Semantic Versioning" (https://semver.org/lang/fr/).
+# Guide pratique pour un bon changelog
 
-POURQUOI UN CHANGELOG ?
-- Permet aux utilisateurs de suivre l'évolution du projet
-- Documente toutes les modifications notables entre les versions
-- Facilite la compréhension des changements et leur impact
-- Sert de référence lors de la mise à jour
-- Améliore la transparence et la confiance
+Un **changelog** est un fichier listant, par version, les changements notables d’un projet destiné aux humains, pas aux machines.
 
-STRUCTURE D'UNE VERSION :
-## [X.Y.Z] - YYYY-MM-DD
+Il aide les utilisateurs et contributeurs à suivre l’évolution du projet.
 
-### Added (Ajouté)
-- Nouvelles fonctionnalités
+Il se base sur les commits mais ne les liste pas tous : il sélectionne et reformule les changements importants pour chaque version publiée.
 
-### Changed (Modifié)
-- Modifications de fonctionnalités existantes
+Pour plus d’informations, voir : https://keepachangelog.com/fr/1.0.0/
 
-### Deprecated (Déprécié)
-- Fonctionnalités obsolètes (encore présentes mais à éviter)
+## Types de changements
 
-### Removed (Supprimé)
-- Fonctionnalités supprimées
+Grouper par type de changement
 
-### Fixed (Corrigé)
-- Corrections de bugs
+- **Added** : nouvelle fonctionnalité
+- **Changed** : modification d’une fonctionnalité existante
+- **Deprecated** : fonctionnalité bientôt supprimée
+- **Removed** : fonctionnalité supprimée
+- **Fixed** : correction de bug
+- **Security** : correction de faille
 
-### Security (Sécurité)
-- Correctifs de sécurité
+### Conseils type
 
-VERSIONING SÉMANTIQUE (MAJOR.MINOR.PATCH) :
-- MAJOR (1.0.0) : Changements incompatibles (breaking changes)
-- MINOR (0.1.0) : Nouvelles fonctionnalités compatibles
-- PATCH (0.0.1) : Corrections de bugs
+- Garder une section "Unreleased" en haut pour les changements non publiés.
+- Lister clairement les dépréciations, suppressions et changements non rétrocompatibles.
+- Préférer le format de date ISO (ex : 2025-12-21).
+- Indiquer la date de chaque version (format ISO : AAAA-MM-JJ).
 
-BONNES PRATIQUES :
-- Toujours dater les versions : ## [1.2.0] - 2025-12-09
-- Grouper par type de changement (Added, Changed, etc.)
-- Écrire pour les utilisateurs, pas pour les développeurs
-- Lier aux issues/PRs : (#42)
-- Ordre antichronologique : version la plus récente en haut
-- Section "Unreleased" pour changements non encore publiés
-- Utiliser l'impératif présent : "Ajoute X" plutôt que "Ajouté X"
-- Être spécifique : éviter "Diverses corrections"
-- Mentionner les breaking changes en MAJUSCULES : **BREAKING**
+### Mauvaises pratiques à éviter
 
-À ÉVITER :
-- ❌ Oublier de dater les versions
-- ❌ Mélanger plusieurs types dans une même section
-- ❌ Copier-coller les messages de commit bruts
-- ❌ Omettre les breaking changes
-- ❌ Utiliser du jargon technique incompréhensible
-- ❌ Ne pas mentionner les dépendances obsolètes
+- Utiliser le log Git brut comme changelog.
+- Oublier de signaler les dépréciations ou suppressions.
+- Utiliser des formats de date ambigus.
 
-EXEMPLES DE FORMULATION :
-- ✅ "Ajoute support de l'authentification OAuth 2.0"
-- ❌ "OAuth marche maintenant"
-- ✅ "**BREAKING**: Renomme la fonction `getUser()` en `fetchUser()`"
-- ❌ "Change fonction"
-- ✅ "Corrige le crash au démarrage sur Windows 11 (#156)"
-- ❌ "Fix bug"
+## Gestion sémantique de version (SemVer)
 
-ADAPTATION À VOTRE PROJET :
-1. Remplacez [Unreleased] par votre première version réelle
-2. Ajoutez la date au format YYYY-MM-DD
-3. Documentez tous les changements significatifs
-4. Mettez à jour à chaque release
-5. Gardez les anciennes versions pour l'historique
-6. Ajoutez des liens vers les issues/PRs GitHub si applicable
+Pour clarifier la compatibilité, faciliter la gestion des dépendances et communiquer clairement les changements aux utilisateurs.
 
-LIENS AUTOMATIQUES (optionnel) :
-En bas du fichier, ajoutez des liens vers les tags Git :
-[Unreleased]: https://github.com/votre-user/votre-repo/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/votre-user/votre-repo/compare/v0.9.0...v1.0.0
+Plus d’infos : https://semver.org/lang/fr/
+
+### Règles essentielles
+
+Format : **MAJEUR.MINEUR.CORRECTIF** (ex : 2.1.3)
+
+- Incrémentez **MAJEUR** pour les changements non rétrocompatibles (1.0.0 → 1.0.1)
+- Incrémentez **MINEUR** pour les ajouts de fonctionnalités rétrocompatibles (1.0.1 → 1.1.0)
+- Incrémentez **CORRECTIF** pour les corrections de bugs rétrocompatibles (1.1.0 → 2.0.0)
+
+### Conseils version
+
+- La version 0.y.z est réservée au développement initial (API instable)
+- Ne jamais modifier une version déjà publiée
+- Documenter l’API publique et ses changements
+
+## Exemple de changelog
+
+```md
+# [1.2.0] - 2025-12-21
+
+**Auteur :** Jean Dupont
+
+## Added
+- feat: ajouter la recherche avancée (Refs: a1b2c3d)
+- feat(auth)!: ajout du support de l’authentification 2FA (Refs: d4e5f6g)
+
+## Changed
+- chore!: suppression du support Node 10 (Refs: h7i8j9k)
+- feat(api)!: modifie la gestion des erreurs (BREAKING CHANGE) (Refs: l0m1n2o)
+- docs(readme): améliore la documentation d’installation (Refs: p3q4r5s)
+
+## Fixed
+- fix(api): correction du bug d’affichage sur mobile (Refs: t6u7v8w, Issue: [#110](https://github.com/WyloW2Ricard0/Enseignement/issues/110))
+
+## Deprecated
+- L’ancienne API d’authentification est dépréciée (Refs: x9y0z1a)
+
+## Removed
+- Suppression du support de Node 10 (Refs: b2c3d4e)
+
+## Security
+- Correction d’une faille XSS sur le formulaire de contact (Refs: f5g6h7i, PR: [#220](https://github.com/WyloW2Ricard0/Enseignement/pull/220))
+```

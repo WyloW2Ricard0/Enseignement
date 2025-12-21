@@ -35,6 +35,7 @@ $GIT_BRANCH_DEFAULT="master"
 ```
 
 ## Installation (Windows)
+
 Téléchargez l'installateur depuis https://git-scm.com/ ou installez via `winget` si disponible.
 
 ```powershell
@@ -43,6 +44,7 @@ Téléchargez l'installateur depuis https://git-scm.com/ ou installez via `winge
 ```
 
 ## Configuration initiale
+
 Définissez votre identité et quelques réglages utiles :
 
 ```powershell
@@ -59,24 +61,29 @@ Définissez votre identité et quelques réglages utiles :
 # Vérification de la configuration
 !git config --global --list
 ```
-Remarque : vous pouvez enlever `--global` pour changer que les paramètres local.
+
+Remarque : vous pouvez enlever `--global` pour ne changer que les paramètres locaux.
 
 ## Cloner un dépôt distant
 
 ### Qu'est-ce qu'un dépôt bare (.git) ?
+
 Un dépôt **bare** (nu) est un dépôt Git sans répertoire de travail. Il contient uniquement l'historique Git (le contenu du dossier `.git`).
 
 **Différences :**
+
 - **Dépôt normal** : `Enseignement/` contient vos fichiers + `.git/` (historique caché)
 - **Dépôt bare** : `Enseignement.git/` contient UNIQUEMENT l'historique Git
 
 **Utilisations principales :**
+
 - **Serveurs Git** : Les dépôts sur GitHub/GitLab sont des dépôts bare
 - **Dépôt central** : Pour partager entre plusieurs développeurs
 - **Backup** : Sauvegarde complète de l'historique sans fichiers de travail
 - **Mirror** : Créer un miroir d'un dépôt distant
 
 **Pourquoi "bare" ?**
+
 - Pas de fichiers de travail (on ne peut pas modifier directement)
 - Plus léger (pas de duplication des fichiers)
 - Évite les conflits (personne ne travaille directement dedans)
@@ -160,6 +167,7 @@ git status
 ```
 
 mettre à jour ta branche locale avec les changements du dépôt distant.
+
 ```powershell
 # Récupérer les modifications depuis le dépôt distant
 git pull $REMOTE_DEFAUT $GIT_BRANCH_DEFAULT
@@ -171,9 +179,12 @@ L'index capture une "photo" des fichiers que vous préparez à enregistrer avant
 Un commit est un snapshot de votre projet à un moment donné — il enregistre l'état des fichiers indexés avec un message explicite et des métadonnées (auteur, date, hash unique).
 
 Commits petits et fréquents avec messages clairs.
+
 - **Première ligne** : résumé court (50 caractères max) en impératif présent
 - **Corps** (optionnel) : explique le *pourquoi* plutôt que le *comment*, séparé par une ligne vide
 - **Références** : mentionnez les issues ou tickets si pertinent
+
+Voir plus d'info sur [gith-commit.md]
 
 ```powershell
 # Ajouter les modifications

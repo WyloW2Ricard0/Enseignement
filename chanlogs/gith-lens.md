@@ -27,6 +27,7 @@ GitLens est une extension VS Code puissante qui enrichit l'intégration Git nati
 4. Cliquer sur **Install**
 
 Ou installer via la ligne de commande :
+
 ```powershell
 code --install-extension eamodio.gitlens
 ```
@@ -36,11 +37,13 @@ code --install-extension eamodio.gitlens
 ### 1. Annotations en ligne (Blame)
 
 GitLens affiche automatiquement des annotations à la fin de chaque ligne montrant :
+
 - L'auteur du dernier commit qui a modifié cette ligne
 - La date du commit
 - Le message du commit (abrégé)
 
 **Activation/désactivation :**
+
 - `Ctrl+Shift+P` → `GitLens: Toggle Line Blame`
 - Ou cliquer sur l'icône GitLens dans la barre d'état
 

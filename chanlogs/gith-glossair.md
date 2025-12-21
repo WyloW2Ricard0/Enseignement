@@ -2,6 +2,7 @@
 versions: 0.1.0
 effectiveDate: 
 author: RICHARD Wilfried
+title: Glossaire Git
 
 excerpt: Définitions des principaux concepts Git (stash, worktree, etc.) pour la gestion de versions.
 type: reference
