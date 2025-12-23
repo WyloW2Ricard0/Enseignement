@@ -1,16 +1,16 @@
 ---
-versions: 0.1.0
-effectiveDate: 2025-12-21
+versions: 1.1.0
+effectiveDate: 2025-12-22
 author: RICHARD Wilfried
 
 title: Convention des commit
 excerpt: Quel est le format d'un commit !
-type: guide
 topics:
-    - auth
-    - sécurité
-    - utilisateur
-image: https://example.com/2fa.png
+    - git
+    - commit
+    - convention
+    - changelog
+image: https://example.com/git-commit.png
 ---
 
 # Conventional Commits : l’essentiel
@@ -37,28 +37,35 @@ image: https://example.com/2fa.png
 
 ```md
 <!--type scope-->
-feat(auth)!: ajoute la validation 2FA
+feat(scope)!: Résumé court du changement
 
 <!--description : résumé court du changement-->
-Ajout d’une étape de validation à deux facteurs (2FA) lors de la connexion utilisateur.
+feat(scope)!: Ajout d’une nouvelle fonctionnalité majeure ou modification importante.
 
 <!--body : explication détaillée, optionnelle-->
-BREAKING CHANGE: L’authentification nécessite désormais une validation 2FA.
-
-<!--footer : informations additionnelles-->
-Refs: #123
-Reviewed-by: Alice
+BREAKING CHANGE: Décrivez ici la rupture de compatibilité ou l’impact majeur pour l’utilisateur.
 ```
 
 ## Lire un commit dans le terminal
 
+Il est donc important de bien preparer son commit. Le moyen pour moi est d'extraitr dans un fichier apart.
+
 ```sh
-# Afficher la liste des commits
+# Afficher la liste des commits (recent -> ancien)
 git log --oneline
 
 # Afficher le détail d’un commit spécifique dans le terminal
 $HASH_COMMIT = ef21b07
 git show $HASH_COMMIT
+ 
+# Exporter le détail d’un commit dans un fichier (avec chemin)
+git show $HASH_COMMIT > docs/commits/$HASH_COMMIT.md
+
+# Exporter les detail du dernier commit
+git show HEAD > changlogs/commits/lasted.md
+
+# Exporter la différence entre le dernier commit (HEAD) et la situation actuelle
+git diff > changlogs/commits/unreleased.md
 ```
 
 ---

@@ -5,13 +5,11 @@ author: RICHARD Wilfried
 
 title: Bien démarrer avec Git
 excerpt: Guide pratique pour installer, configurer et utiliser Git efficacement dès le début.
-type: guide
 topics:
   - git
   - versioning
   - powershell
   - workflow
-  - tutoriel
 image: "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png"
 ---
 # Bien démarrer avec Git
