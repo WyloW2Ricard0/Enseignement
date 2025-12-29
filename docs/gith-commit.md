@@ -37,12 +37,13 @@ image: https://example.com/git-commit.png
 
 ```md
 <!--type scope-->
-feat(scope)!: Résumé court du changement
+Résumé court du changement
 
 <!--description : résumé court du changement-->
-feat(scope)!: Ajout d’une nouvelle fonctionnalité majeure ou modification importante.
+- feat(scope)!: Ajout d’une nouvelle fonctionnalité majeure ou modification importante.
+- ...
 
-<!--body : explication détaillée, optionnelle-->
+<!--body : explication détaillée-->
 BREAKING CHANGE: Décrivez ici la rupture de compatibilité ou l’impact majeur pour l’utilisateur.
 ```
 
@@ -65,7 +66,7 @@ git show $HASH_COMMIT > docs/commits/$HASH_COMMIT.md
 git show HEAD > changlogs/commits/lasted.md
 
 # Exporter la différence entre le dernier commit (HEAD) et la situation actuelle
-git diff > changlogs/commits/unreleased.md
+git diff > docs/commits/unreleased.md
 ```
 
 ---
