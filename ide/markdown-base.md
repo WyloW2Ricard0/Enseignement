@@ -25,7 +25,14 @@ Markdown devrait être très facile à comprendre simplement en regardant quelqu
 Les exemples sur cette page sont écrits dans un style avant/après, montrant un exemple de syntaxe et le
 résultat HTML produit par Markdown.
 
-### Paragraphs,Headers, Blockquotes
+- [Paragraphs, Headers, Blockquotes](#paragraphs-headers-blockquotes)
+- [Phrase Emphasis](#phrase-emphasis)
+- [Lists](#lists)
+- [Links](#links)
+- [Images](#images)
+- [Code](#code)
+
+### Paragraphs, Headers, Blockquotes
 
 Un **paragraphe** est simplement une ou plusieurs lignes consécutives de texte, ***séparées par une ou plusieurs lignes vides*** ~rien d'autre que des espaces ou des tabulations).
 
@@ -34,6 +41,7 @@ Les **en-têtes** de style *atx* pour `<h1>` et `<h2>` sont créés en ***placez
 Les **citations** sont indiquées à l'aide de crochets angulaires `>` de style e-mail.
 
 Markdown:
+
 ```md
 # A First Level Header
 
@@ -55,8 +63,8 @@ dog's back.
 > ## This is an H2 in a blockquote
 ```
 
-
 Output:
+
 ```html
 <h1>A First Level Header</h1>
 
@@ -80,11 +88,12 @@ dog's back.</p>
 </blockquote>
 ```
 
-### Phrase Emphasis ###
+### Phrase Emphasis
 
 Des **astérisques** pour indiquer les passages à mettre en évidence.
 
 Markdown:
+
 ```md
 Some of these words *are emphasized*.
 
@@ -92,17 +101,19 @@ Use two asterisks for **strong emphasis**.
 ```
 
 Output:
+
 ```html
 <p>Some of these words <em>are emphasized</em>.
 
 <p>Use two asterisks for <strong>strong emphasis</strong>.
-``` 
+```
 
-## Lists ##
+## Lists
 
 Les listes **non ordonnées** (à puces) utilisent des tirets (`-`) comme marqueurs de liste.
 
 Markdown:
+
 ```md
 -   Candy.
 -   Gum.
@@ -110,6 +121,7 @@ Markdown:
 ```
 
 Output:
+
 ```html
 <ul>
 <li>Candy.</li>
@@ -127,6 +139,7 @@ Les listes **ordonnées** (numérotées) utilisent des chiffres normaux suivis d
 ```
 
 Output:
+
 ```html
 <ol>
 <li>Red</li>
@@ -147,6 +160,7 @@ Si vous ***insérez des lignes vides entre les éléments***, vous obtiendrez de
 ```
 
 Output:
+
 ```html
 <ul>
 <li><p>A list item.</p>
@@ -155,7 +169,7 @@ Output:
 </ul>
 ```
 
-### Links ###
+### Links
 
 Pour **créer des liens** *reference* par leur nom. 
 
@@ -165,7 +179,6 @@ Les noms des liens peuvent contenir des lettres, des chiffres et des espaces, ma
 
 Vous définissez ailleurs dans votre document :
 
-
 ```md
 I start my morning with a cup of coffee and
 [The New York Times][NY Times].
@@ -174,16 +187,18 @@ I start my morning with a cup of coffee and
 ```
 
 Output:
+
 ```html
 <p>I start my morning with a cup of coffee and
 <a href="http://www.nytimes.com/">The New York Times</a>.</p>
 ```
 
-### Images ###
+### Images
 
 La syntaxe des images est très similaire à celle des liens.
 
 Reference-style:
+
 ```md
 ![alt text][id]
 
@@ -191,13 +206,20 @@ Reference-style:
 ```
 
 Output:
+
 ```html
 <img src="/path/to/img.jpg" alt="alt text" title="Title" />
 ```
 
+Pour **ajuster la taille** d'une image, utilisez du HTML (Markdown ne gère pas les dimensions directement) :
 
+```md
+<img src="/path/to/img.jpg" alt="alt text" title="Title" width="320" height="180" />
+```
 
-### Code ###
+Vous pouvez aussi ne préciser qu'une seule dimension (par exemple `width="320"`) et laisser le navigateur conserver les proportions.
+
+### Code
 
 Vous pouvez **créer une balise** de code en ***encadrant le texte par des guillemets inversés***.
 
@@ -213,6 +235,7 @@ instead of decimal-encoded entities like `&#8212;`.
 ```
 
 Output:
+
 ```html
 <p>I strongly recommend against using any
 <code>&lt;blink&gt;</code> tags.</p>
@@ -221,7 +244,6 @@ Output:
 <code>&amp;mdash;</code> instead of decimal-encoded
 entities like <code>&amp;#8212;</code>.</p>
 ```
-
 
 Pour **spécifier un bloc entier** de code préformaté, indentez chaque ligne du bloc de `1 tabulation`. Tout comme pour les segments de code, les caractères `&`, `<` et
 `>` seront automatiquement échappés.
@@ -236,6 +258,7 @@ you've got to put paragraph tags in your blockquotes:
 ```
 
 Output:
+
 ```html
 <p>If you want your page to validate under XHTML 1.0 Strict,
 you've got to put paragraph tags in your blockquotes:</p>

@@ -1,34 +1,75 @@
----
-versions: 1.0.0
-effectiveDate: 2025-12-23
-author: RICHARD Wilfried
-title: Démarrer avec Next.js
-excerpt: Guide essentiel pour débuter et déployer une application Next.js
-type: guide
-topics:
-	- nextjs
-	- react
-	- framework
-	- web
-	- déploiement
-image: https://nextjs.org/static/favicon/safari-pinned-tab.svg
----
+# Comment créer une page de dev avec Next.js (minimal)
 
-# Next.js – Guide de démarrage
+## Structure de base
 
-Next.js est un framework React moderne pour créer des applications web full-stack, dynamiques et performantes.
+### README.md
 
-## Points essentiels
-- Utilisez des composants React pour l’interface utilisateur.
-- Next.js gère le routage, le rendu côté serveur, l’optimisation et le déploiement.
-- Deux routeurs disponibles :
-	- **App Router** (recommandé, supporte les composants serveur)
-	- **Pages Router** (historique, toujours maintenu)
-- Déployez facilement sur Vercel ou toute plateforme compatible Node.js.
+### package.json minimal
 
-## Prérequis
-- Connaissances de base en HTML, CSS, JavaScript et React.
+```json
+{
+  "name": "theme",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "@mui/material": "latest",
+  }
+}
+```
 
-## Pour aller plus loin
-- Consultez la documentation officielle Next.js pour des tutoriels, guides avancés et références API.
-- Rejoignez la communauté Next.js sur GitHub, Discord, X (Twitter) et Reddit pour poser vos questions et échanger.
+### app\page.js
+
+```js
+import { Container, Typography, Box } from '@mui/material'
+
+export default function Home() {
+  return (
+    <Container>
+      <Box sx={{ py: 4 }}>
+        <Typography variant="h1">Bienvenue</Typography>
+      </Box>
+    </Container>
+  )
+}
+```
+
+### app\layout.js
+
+```js
+'use client'
+
+import {
+  CssBaseline,
+  ThemeProvider, createTheme } from '@mui/material'
+
+const theme = createTheme()
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="fr">
+      <body>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+### Apercu
+
+```shell
+npm install
+npm run dev
+```
+
+C'est tout ! La page est accessible sur http://localhost:3000
