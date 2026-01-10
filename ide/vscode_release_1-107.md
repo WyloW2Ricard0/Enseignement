@@ -19,6 +19,7 @@ image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_
 Retrouvez le détail complet des nouveautés et corrections sur le site officiel : [Notes de version VS Code 1.107](https://code.visualstudio.com/updates/v1_107)
 
 ## Agents et Chat
+
 - Sessions d’**agents améliorées** : vue côte-à-côte, état mémorisé, marquage des sessions nécessitant une action, ***archivage simplifié***.
 - **Orchestration multi-agents** : Copilot et agents personnalisés ***peuvent collaborer et s’exécuter en parallèle*** (local, cloud, arrière-plan).  Utilisez l’option pour déléguer une tâche à un autre agent (bouton  *"Continue in"*), chacun dans son propre contexte (local, cloud, ou arrière-plan). Pour travailler sur plusieurs branches ou contextes sans conflit (*Git worktree*).
 - **Partage d’agents** personnalisés dans une organisation GitHub (*expérimental*).
@@ -26,6 +27,7 @@ Retrouvez le détail complet des nouveautés et corrections sur le site officiel
 - ***Support des « skills » Claude*** (*expérimental*).
 
 ## Chat et expérience utilisateur
+
 - Chat intégré à la gestion des agents, ***navigation facilitée*** entre sessions.
 - **Amélioration de l’UX** : sections repliables, affichage des statuts de commandes terminal, raccourcis clavier pour le terminal et les agents personnalisés.
 - **Affichage des diffs** lors de l’édition de ***fichiers sensibles***.

@@ -29,6 +29,7 @@ title: Mon premier blog
 ```
 
 **Conseils pratiques :**
+
 - Le frontmatter peut être vide (utile pour les flux CSS/RSS).
 - ***Attention au codage UTF-8*** : évitez le BOM en début de fichier, surtout sous Windows.
 - Pour ne pas répéter les mêmes variables.
@@ -86,7 +87,7 @@ topics: # Indiquer les sujets abordés par l’article (https://github.com/githu
 communityRedirect: # Définir un lien personnalisé et un nom de lien pour le lien dans le pied de page.
   name: Communauté
   href: https://github.community
-  Object: 
+  Object:
 effectiveDate: 2025-12-19
 ---
 ```
