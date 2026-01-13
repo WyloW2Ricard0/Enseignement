@@ -4,7 +4,7 @@ effectiveDate: 2025-12-11
 author: RICHARD Wilfried
 
 title: Introduction à la gestion de version et Git
-excerpt: Comprendre les bases des systèmes de gestion de version (VCS) et l’intérêt de Git.
+intro: Comprendre les bases des systèmes de gestion de version (VCS) et l’intérêt de Git.
 topics:
   - git
   - versioning

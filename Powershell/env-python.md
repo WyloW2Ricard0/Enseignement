@@ -1,6 +1,6 @@
 ---
 title: Environnements et automatisation Python
-excerpt: Guide pratique pour gérer les bibliothèques, variables d’environnement et automatiser avec Python.
+intro: Guide pratique pour gérer les bibliothèques, variables d’environnement et automatiser avec Python.
 type: guide
 topics:
   - python

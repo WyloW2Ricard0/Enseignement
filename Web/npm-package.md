@@ -4,7 +4,7 @@ effectiveDate: 2025-12-19
 author: RICHARD Wilfried
 
 title: package.json : l’essentiel
-excerpt: Guide pratique pour comprendre et rédiger un fichier package.json pour Node.js/npm.
+intro: Guide pratique pour comprendre et rédiger un fichier package.json pour Node.js/npm.
 type: guide
 topics:
   - npm

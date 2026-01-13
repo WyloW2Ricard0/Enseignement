@@ -1,6 +1,6 @@
 ---
 title: Journal des versions (Changelog)
-excerpt: Page de présentation et d’accès aux journaux de versions du dépôt pour le cours pratique.
+intro: Page de présentation et d’accès aux journaux de versions du dépôt pour le cours pratique.
 type: page
 topics: [changelog, version, cours pratique]
 ---

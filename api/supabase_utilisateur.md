@@ -4,7 +4,7 @@ effectiveDate: 2025-12-19
 author: RICHARD Wilfried
 
 title: Authentification et gestion des utilisateurs Supabase
-excerpt: Guide pour gérer l’authentification, les rôles et la sécurité des utilisateurs avec Supabase.
+intro: Guide pour gérer l’authentification, les rôles et la sécurité des utilisateurs avec Supabase.
 type: guide
 topics:
   - supabase

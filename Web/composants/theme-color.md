@@ -1,6 +1,6 @@
 ---
 title: Roles de couleur Material Design
-excerpt: Guide des 26 roles de couleur standard pour une interface accessible
+intro: Guide des 26 roles de couleur standard pour une interface accessible
 ---
 
 # Roles de couleur Material Design

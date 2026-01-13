@@ -4,7 +4,7 @@ effectiveDate: 2025-12-22
 author: RICHARD Wilfried
 
 title: Accès et automatisation GitHub
-excerpt: Guide synthétique pour sécuriser, automatiser et choisir le bon mode d’accès à l’API GitHub.
+intro: Guide synthétique pour sécuriser, automatiser et choisir le bon mode d’accès à l’API GitHub.
 type: guide
 topics:
   - github

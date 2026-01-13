@@ -4,7 +4,7 @@ effectiveDate:
 author: RICHARD Wilfried
 
 title:
-excerpt: 
+intro: 
 type: 
 topics:
 image: 

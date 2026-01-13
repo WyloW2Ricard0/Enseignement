@@ -4,7 +4,7 @@ effectiveDate: 2025-12-19
 author: RICHARD Wilfried
 
 title: Démarrer avec Supabase
-excerpt: Guide pour connecter un projet, utiliser l’API REST et gérer les clés API avec Supabase.
+intro: Guide pour connecter un projet, utiliser l’API REST et gérer les clés API avec Supabase.
 type: guide
 topics:
 	- supabase

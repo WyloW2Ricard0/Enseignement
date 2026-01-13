@@ -1,6 +1,6 @@
 ---
 title: Mentions obligatoires sur un site internet
-excerpt: Guide complet sur les mentions légales, CGU, CGV et politiques de confidentialité à afficher sur un site web professionnel en France.
+intro: Guide complet sur les mentions légales, CGU, CGV et politiques de confidentialité à afficher sur un site web professionnel en France.
 type: guide
 topics: [légal, site web, mentions légales, RGPD, CGU, CGV, confidentialité]
 image: "https://www.eurojuris.fr/medias/org-224/shared/mentions-obligatoires------kotoyamagami.jpg"

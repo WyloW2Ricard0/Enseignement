@@ -4,7 +4,7 @@ effectiveDate: 2025-12-19
 author: RICHARD Wilfried
 
 title: npm : l’essentiel
-excerpt: Guide pratique pour comprendre et utiliser npm, le gestionnaire de paquets Node.js.
+intro: Guide pratique pour comprendre et utiliser npm, le gestionnaire de paquets Node.js.
 type: guide
 topics:
   - npm

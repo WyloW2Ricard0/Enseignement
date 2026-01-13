@@ -4,7 +4,7 @@ effectiveDate: 2025-12-19
 author: RICHARD Wilfried
 
 title: GitHub Pages – Guide pratique
-excerpt: Tutoriel pour activer, configurer et publier un site statique avec GitHub Pages.
+intro: Tutoriel pour activer, configurer et publier un site statique avec GitHub Pages.
 type: guide
 topics:
   - github

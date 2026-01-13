@@ -4,7 +4,7 @@ effectiveDate: 2025-12-16
 author: RICHARD Wilfried
 
 title: Contrôle de code source dans VS Code
-excerpt: Guide pratique pour utiliser Git et le contrôle de version dans Visual Studio Code.
+intro: Guide pratique pour utiliser Git et le contrôle de version dans Visual Studio Code.
 type: guide
 topics:
   - vscode

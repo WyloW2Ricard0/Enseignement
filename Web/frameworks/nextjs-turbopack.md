@@ -3,7 +3,7 @@ versions: 1.0.0
 effectiveDate: 2025-12-23
 author: RICHARD Wilfried
 title: Démarrer avec Turbopack (Next.js)
-excerpt: Guide essentiel pour activer et configurer Turbopack dans Next.js
+intro: Guide essentiel pour activer et configurer Turbopack dans Next.js
 type: guide
 topics:
   - turbopack

@@ -3,7 +3,7 @@ versions: 1.0.0
 effectiveDate: 2025-12-23
 author: RICHARD Wilfried
 title: Démarrer avec ESLint
-excerpt: Guide essentiel pour configurer et utiliser ESLint dans vos projets JavaScript
+intro: Guide essentiel pour configurer et utiliser ESLint dans vos projets JavaScript
 type: guide
 topics:
 	- eslint

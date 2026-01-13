@@ -3,7 +3,7 @@ versions: 1.0.0
 effectiveDate: 2025-12-23
 author: RICHARD Wilfried
 title: Guide de démarrage Vercel
-excerpt: Démarrer et déployer rapidement avec Vercel (Next.js, IA, sécurité, collaboration)
+intro: Démarrer et déployer rapidement avec Vercel (Next.js, IA, sécurité, collaboration)
 type: guide
 topics:
 	- vercel

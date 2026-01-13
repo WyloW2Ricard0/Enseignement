@@ -3,7 +3,7 @@ versions: 1.0.0
 effectiveDate: 2025-12-23
 author: RICHARD Wilfried
 title: Démarrer avec Next.js
-excerpt: Guide essentiel pour débuter et déployer une application Next.js
+intro: Guide essentiel pour débuter et déployer une application Next.js
 type: guide
 topics:
 	- nextjs

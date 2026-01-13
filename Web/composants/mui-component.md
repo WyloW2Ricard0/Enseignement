@@ -4,7 +4,7 @@ effectiveDate:
 author: RICHARD Wilfried
 
 title: Prioriser les composants MUI
-excerpt: Guide pour choisir et organiser les composants principaux de Material-UI pour une architecture uniforme.
+intro: Guide pour choisir et organiser les composants principaux de Material-UI pour une architecture uniforme.
 type: guide
 topics:
   - mui

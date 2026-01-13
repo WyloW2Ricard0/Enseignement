@@ -1,15 +1,29 @@
 ---
+# Variable
+showMiniToc: true
+permissions: true
 effectiveDate: 2026-01-01
-author: RICHARD Wilfried
+image: "https://example.com/git-commit.png"
 
+# Content pour faciliter la recherche
 title: Convention des commit
-excerpt: Quel est le format d'un commit !
+intro: Quel est le format d'un commit !
+type: documentation
 topics:
     - git
     - commit
     - convention
-    - changelog
-image: https://example.com/git-commit.png
+
+# Information
+author: RICHARD Wilfried
+featuredLinks:
+    - prev:
+    - next:
+    - mid:
+    - exp:
+    - ofi:
+changelog:
+    - 2026-01-13 : Initialisation du frontmatter YAML enrichi
 ---
 
 # Conventional Commits : l’essentiel
@@ -75,7 +89,27 @@ git show $HASH_COMMIT > "$PATH/$HASH_COMMIT.md"
 git show HEAD > "$PATH/lasted.md"
 
 # Exporter la différence entre le dernier commit (HEAD) et la situation actuelle
-git diff > "$PATH/unreleased.md"
+git diff HEAD > "$PATH/next.md"
+
+# Inclure aussi les nouveaux fichiers (non suivis)
+# Méthode 1 — simple: marquer les nouveaux fichiers comme "intent-to-add"
+git add -N .
+git diff HEAD > "$PATH/next.md"
+# (optionnel) Annuler l'intention d'ajout
+git reset
+```
+
+Si vous préférez conserver l’index intact et concaténer le contenu des nouveaux fichiers sans les toucher, vous pouvez utiliser PowerShell:
+
+```powershell
+$PATH = "docs/commits"
+# Diff complet (fichiers suivis)
+git diff HEAD > "$PATH/next.md"
+
+# Ajouter, en fin de fichier, le diff des fichiers non suivis (nouveaux)
+git ls-files --others --exclude-standard |
+    ForEach-Object { git diff --no-index -- NUL $_ } |
+    Out-File -Append -Encoding utf8 "$PATH/next.md"
 ```
 
 

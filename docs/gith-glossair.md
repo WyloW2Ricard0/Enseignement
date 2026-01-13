@@ -4,7 +4,7 @@ effectiveDate:
 author: RICHARD Wilfried
 title: Glossaire Git
 
-excerpt: Définitions des principaux concepts Git (stash, worktree, etc.) pour la gestion de versions.
+intro: Définitions des principaux concepts Git (stash, worktree, etc.) pour la gestion de versions.
 topics:
   - git
   - glossaire

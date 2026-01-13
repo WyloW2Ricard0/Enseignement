@@ -4,7 +4,7 @@ effectiveDate: 2025-12-19
 author: RICHARD Wilfried
 
 title: GitLens — Guide d'utilisation
-excerpt: Guide complet pour installer, configurer et exploiter l’extension GitLens dans VS Code.
+intro: Guide complet pour installer, configurer et exploiter l’extension GitLens dans VS Code.
 topics:
   - git
   - vscode

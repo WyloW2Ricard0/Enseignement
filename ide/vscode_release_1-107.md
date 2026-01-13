@@ -4,7 +4,7 @@ effectiveDate: 2025-12-15
 author: RICHARD Wilfried
 
 title: VS Code 1.107 – Nouveautés
-excerpt: Résumé des nouveautés, améliorations et corrections de la version 1.107 de Visual Studio Code.
+intro: Résumé des nouveautés, améliorations et corrections de la version 1.107 de Visual Studio Code.
 type: changelog
 topics:
   - vscode

@@ -3,7 +3,7 @@ collected: true
 title: "Composants de Layout Material-UI : Grid, Box, Stack, Container"
 date: "2024-12-18"
 category: "React"
-excerpt: "Un guide complet pour choisir le bon composant de layout Material-UI selon votre cas d'usage."
+intro: "Un guide complet pour choisir le bon composant de layout Material-UI selon votre cas d'usage."
 author:
     name: "Wilfried Richard"
     role: "Auteur"

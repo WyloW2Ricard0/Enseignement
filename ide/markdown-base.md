@@ -4,7 +4,7 @@ effectiveDate: 2025-12-17
 author: RICHARD Wilfried
 
 title: Markdown : bases et exemples
-excerpt: Exemples concrets pour apprendre la syntaxe de base de Markdown et son rendu HTML.
+intro: Exemples concrets pour apprendre la syntaxe de base de Markdown et son rendu HTML.
 type: tutoriel
 topics:
     - markdown

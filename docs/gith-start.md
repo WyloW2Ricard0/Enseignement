@@ -3,7 +3,7 @@ effectiveDate: 2026-01-01
 author: RICHARD Wilfried
 
 title: Bien demarrer avec Git
-excerpt: Guide pratique pour installer, configurer et utiliser Git efficacement dès le debut.
+intro: Guide pratique pour installer, configurer et utiliser Git efficacement dès le debut.
 topics:
   - git
   - versioning
@@ -168,19 +168,43 @@ git remote -v
 ```
 
 ## Branches (travail isole)
-Une **branche** est une ligne de developpement independante permettant de travailler en parallèle sans affecter la branche principale (*main* ou *master*). 
+
+Une **branche** est une ligne de developpement independante permettant de travailler en parallèle sans affecter la branche principale (*main* ou *master*).
 Chaque branche pointe vers un commit specifique et peut evoluer independamment.
 
 **Quand creer une branche :**
+
 - Developper une nouvelle fonctionnalite
 - Corriger un bug sans impacter le code stable
 - Experimenter sans risque
 - Travailler en equipe sur des tâches differentes
 
-```powershell
+### Changer de branch
+
+```shell
 # Voir toutes les branches locales et distantes
 git branch -a
-!git switch $BRANCHE_NOUVELLE
+# Entre le nom soiter
+$BRANCHE_NAME='main'
+# Changer de branch
+git switch $BRANCHE_NAME
+```
+
+### Suprimer une branche
+
+(Attention on ne peut cier la branche sur lequel on est)
+
+```shell
+# Voir toutes les branches locales et distantes
+git branch -a
+# Entre le nom soiter
+$REMOTE_NAME='origin'
+$BRANCHE_NAME='main'
+# Changer de branch
+git branch -d remotes/$REMOTE_NAME/$BRANCHE_NAME
+```
+
+```sh
 !git switch -c $BRANCHE_NOUVELLE $REMOTE_DEFAUT/$BRANCHE_PRINCIPALE
 !git branch $BRANCHE_NOUVELLE ef21b07
 git restore README.md

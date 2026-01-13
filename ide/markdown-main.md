@@ -4,7 +4,7 @@ effectiveDate: 2025-12-18
 author: RICHARD Wilfried
 
 title: Markdown : l’essentiel
-excerpt: Guide pratique pour comprendre et utiliser la syntaxe Markdown.
+intro: Guide pratique pour comprendre et utiliser la syntaxe Markdown.
 type: guide
 topics:
   - markdown
