@@ -18,6 +18,7 @@ image: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.pn
 # Accès GitHub : guide synthétique
 
 ## Sécurité & Bonnes pratiques
+
 - Traitez les jetons comme des mots de passe : ne les partagez ni ne les publiez jamais.
 - Limitez les permissions et l'accès aux dépôts au strict nécessaire.
 - Définissez une date d'expiration.
@@ -25,6 +26,7 @@ image: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.pn
 - Utilisez un gestionnaire de mots de passe ou le CLI pour stocker les jetons en sécurité.
 
 ### Références
+
 - [Docs GitHub : Jetons d'accès personnels](https://docs.github.com/fr/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 - [Bonnes pratiques pour les identifiants API](https://docs.github.com/fr/authentication/keeping-your-account-and-data-secure/keeping-your-api-credentials-secure)
 
