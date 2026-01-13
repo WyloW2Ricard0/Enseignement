@@ -66,6 +66,13 @@ changelog: # pour mettre au couran l'utilisateur de la page d'une modification
 ---
 ```
 
+**Conseils pratiques :**
+- Le frontmatter peut être vide (utile pour les flux CSS/RSS).
+- ***Attention au codage UTF-8*** : évitez le BOM en début de fichier, surtout sous Windows.
+- Pour ne pas répéter les mêmes variables.
+- Les ***fichiers index.md doivent contenir la propriété children***.
+- Pour **échapper une apostrophe**, utiliser deux apostrophes ('') ou des guillemets doubles.
+
 ## Proprietes standard
 
 Entre ces lignes, vous pouvez definir des variables predefinies (layout, title, permalink, published, date, category, tags) ou vos propres variables personnalisees, accessibles dans le contenu avec les balises Liquid (ex : {{ page.food }}).
@@ -117,7 +124,7 @@ topics: # Indiquer les sujets abordes par l’article (https://github.com/github
 communityRedirect: # Definir un lien personnalise et un nom de lien pour le lien dans le pied de page.
   name: Communaute
   href: https://github.community
-  Object: 
+  Object:
 effectiveDate: 2025-12-19
 ---
 ```
