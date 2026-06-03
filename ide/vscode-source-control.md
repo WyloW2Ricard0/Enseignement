@@ -4,7 +4,7 @@ effectiveDate: 2025-12-16
 author: RICHARD Wilfried
 
 title: Contrôle de code source dans VS Code
-intro: Guide pratique pour utiliser Git et le contrôle de version dans Visual Studio Code.
+excerpt: Guide pratique pour utiliser Git et le contrôle de version dans Visual Studio Code.
 type: guide
 topics:
   - vscode
@@ -20,6 +20,7 @@ image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_
 VS Code intègre la gestion Git pour le contrôle de version : vous pouvez effectuer toutes les opérations courantes (mise en scène, commit, création de branches, résolution de conflits) directement dans l’éditeur, sans passer par le terminal.
 
 ## Prérequis
+
 - Installez Git (version 2.0.0 ou ultérieure) sur votre machine.
 - Configurez votre nom et e-mail :
 	```bash
@@ -39,6 +40,7 @@ VS Code intègre la gestion Git pour le contrôle de version : vous pouvez eff
 - Indicateurs de modification dans la marge de l’éditeur.
 
 ## Flux de travail
+
 1. Modifiez vos fichiers.
 2. Examinez les changements dans la vue Contrôle de version.
 3. Mettez en scène les fichiers (+).
@@ -46,20 +48,25 @@ VS Code intègre la gestion Git pour le contrôle de version : vous pouvez eff
 5. Synchronisez avec le dépôt distant (push/pull).
 
 ## Résolution de conflits
+
 VS Code met en évidence les fichiers en conflit. Utilisez l’éditeur pour choisir les modifications à conserver ou l’éditeur de fusion à trois voies pour une vue détaillée.
 
 ## Branches et réserves
+
 - Changez de branche rapidement.
 - Utilisez les arbres de travail pour travailler sur plusieurs branches.
 - Utilisez le stash pour sauvegarder temporairement des modifications non validées.
 
 ## Historique
+
 - Visualisez l’historique des commits et la timeline d’un fichier.
 
 ## Intégration GitHub
+
 - Gérez les pull requests et issues avec l’extension GitHub Pull Requests and Issues.
 
 ## Autres systèmes
+
 - Installez des extensions pour Azure DevOps, SVN, Mercurial, etc.
 
 ---

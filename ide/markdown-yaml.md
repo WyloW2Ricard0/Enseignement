@@ -37,7 +37,6 @@ Tout fichier Markdown contenant un bloc frontmatter YAML (entre trois tirets ---
 ## Mon choix actuel
 
 ```yaml
----
 # Variable
 showMiniToc: true # auto et pas dans text
 permissions: true # parametre d'accessibilite hors de GitHub
@@ -63,10 +62,10 @@ featuredLinks: # lien interne ver d'autre page
   - ofi: # lien ver le site officiel
 changelog: # pour mettre au couran l'utilisateur de la page d'une modification
   - 2025-01-04 : cour explication de la modification effectuer
----
 ```
 
 **Conseils pratiques :**
+
 - Le frontmatter peut être vide (utile pour les flux CSS/RSS).
 - ***Attention au codage UTF-8*** : évitez le BOM en début de fichier, surtout sous Windows.
 - Pour ne pas répéter les mêmes variables.
