@@ -35,6 +35,3 @@ npm run dev
 - Creer une application Vue, React, Svelte, etc. en quelques secondes.
 - Developpement rapide grâce au rechargement instantane.
 - Build de production optimise et rapide.
-
----
-Fichier resume par Copilot (GPT-4.1)

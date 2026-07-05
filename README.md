@@ -10,30 +10,18 @@ author:
     avatar: "public/images/perso_kerbal.png"
 image: "/images/blog3.jpg"
 ---
+
 # Enseignement
 
-<!-- 
-GUIDE D'UTILISATION DE CE README :
-
+<!--
 Ce README est conçu comme un modèle réutilisable pour vos futurs projets.
 Il intègre les meilleures pratiques et explications détaillées pour faciliter
 la compréhension et l'adaptation.
 
-SECTIONS PRINCIPALES :
-1. En-tête : Titre + badges + description courte
-2. Table des matières : Navigation rapide
-3. À propos : Contexte et objectifs du projet
-4. Démarrage rapide : Installation en quelques commandes
-5. Structure : Organisation du dépôt
-6. Utilisation : Exemples concrets
-7. Documentation : Liens vers guides détaillés
-8. Contribution : Comment participer
-9. Licence : Droits d'utilisation
-10. Auteurs et remerciements
-
+GUIDE D'UTILISATION DE CE README :
 ADAPTATION POUR VOS PROJETS :
 - Remplacer [PLACEHOLDERS] par vos informations
-- Supprimer les commentaires HTML (<!-- -->) en production
+- Supprimer les commentaires HTML en production
 - Ajouter des badges pertinents (build status, couverture tests, etc.)
 - Adapter la structure selon votre type de projet
 - Traduire si nécessaire (ce template est en français)
@@ -42,27 +30,31 @@ RESSOURCES :
 - Guide Markdown : https://www.markdownguide.org/
 - Awesome README : https://github.com/matiassingers/awesome-readme
 - Shields.io : https://shields.io/ (badges)
--->
 
-<<<<<<< HEAD
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-=======
->>>>>>> main
 [![GitHub last commit](https://img.shields.io/github/last-commit/WyloW2Ricard0/Enseignement)](https://github.com/WyloW2Ricard0/Enseignement/commits/master)
 [![GitHub repo size](https://img.shields.io/github/repo-size/WyloW2Ricard0/Enseignement)](https://github.com/WyloW2Ricard0/Enseignement)
-
-<!-- 
-BADGES RECOMMANDÉS (ajoutez selon vos besoins) :
-- Build status (CI/CD) : [![Build Status](https://img.shields.io/travis/user/repo)](https://travis-ci.org/user/repo)
-- Couverture tests : [![Coverage](https://img.shields.io/codecov/c/github/user/repo)](https://codecov.io/gh/user/repo)
-- Version : [![Version](https://img.shields.io/github/v/release/user/repo)](https://github.com/user/repo/releases)
-- Language : [![Language](https://img.shields.io/github/languages/top/user/repo)](https://github.com/user/repo)
-- Contributors : [![Contributors](https://img.shields.io/github/contributors/user/repo)](https://github.com/user/repo/graphs/contributors)
 -->
 
-> 📚 Dépôt de ressources pédagogiques et guides pratiques pour l'apprentissage de Git, PowerShell, Python et des bonnes pratiques de développement.
+<table align="center"><tr>
+  <td> <a href="https://travis-ci.org/WyloW2Ricard0/Enseignement">
+    <img alt="Build Status" src="https://img.shields.io/travis/Wylow2Ricard0/Enseignement"/>
+  </a></td>
+  <td><a href="https://codecov.io/gh/Wylow2Ricard0/Enseignement">
+    <img alt="Coverage" src="https://img.shields.io/codecov/c/github/Wylow2Ricard0/Enseignement"/>
+  </a></td>
+  <td><a href="https://github.com/Wylow2Ricard0/Enseignement/releases">
+    <img alt="Version" src="https://img.shields.io/codecov/c/github/Wylow2Ricard0/Enseignement"/>
+  </a></td>
+  <td><a href="https://github.com/uWylow2Ricard0/Enseignement">
+    <img alt="Language" src="https://img.shields.io/github/languages/top/Wylow2Ricard0/Enseignement"/>
+  </a></td>
+  <td><a href="https://github.com/Wylow2Ricard0/Enseignement/graphs/contributors">
+    <img alt="Contributors" src="https://img.shields.io/github/contributors/Wylow2Ricard0/Enseignement"/>
+  </a></td>
+</tr></table>
 
-<!-- 
+<!--
 DESCRIPTION COURTE (quote block ci-dessus) :
 - Maximum 2 lignes
 - Résume l'essence du projet
@@ -70,29 +62,29 @@ DESCRIPTION COURTE (quote block ci-dessus) :
 - Répond à "Qu'est-ce que c'est ?" en 10 secondes
 -->
 
----
+📚 Dépôt de ressources pédagogiques et guides pratiques pour l'apprentissage et des bonnes pratiques de développement.
 
 ## 📋 Table des matières
 
-<!-- 
+<!--
 La table des matières facilite la navigation dans les longs README.
 Utilisez des ancres Markdown (#section-name) pour créer des liens internes.
 -->
 
 1. [À propos](#-à-propos)
-1. [Démarrage rapide](#-démarrage-rapide)
 1. [Structure du projet](#-structure-du-projet)
 1. [Documentation](#-documentation)
 1. [Utilisation](#-utilisation)
 1. [Licence](#-licence)
 1. [Contact](#-contact)
 1. [Remerciements](#-remerciements)
+1. [Notes additionnelles](#-notes-additionnelles)
 
 ---
 
 ## 🎯 À propos
 
-<!-- 
+<!--
 Cette section explique le POURQUOI du projet.
 Répondez aux questions :
 - Quel problème résout-il ?
@@ -111,151 +103,30 @@ Ce dépôt centralise des **ressources pédagogiques complètes** pour l'apprent
 
 ### Objectifs
 
-✅ Fournir des guides étape par étape, testés et maintenus  
-✅ Couvrir les outils essentiels (Git, GitLens, PowerShell, Python)  
-✅ Documenter les standards de structuration de projets  
-✅ Servir de modèle réutilisable pour futurs projets  
-✅ Encourager les bonnes pratiques dès le début  
+- ✅ Fournir des guides étape par étape, testés et maintenus
+- ✅ Couvrir les outils essentiels
+- ✅ Documenter les standards de structuration de projets
+- ✅ Servir de modèle réutilisable pour futurs projets
+- ✅ Encourager les bonnes pratiques dès le début
 
 ### Technologies couvertes
 
 | Technologie | Niveau | Contenu |
 |-------------|--------|---------|
 | **Git** | Débutant à Intermédiaire | Installation, configuration, workflows, branches, résolution conflits |
-| **GitLens** | Intermédiaire | Extension VS Code, annotations, historique, blame, comparaisons |
 | **PowerShell** | Débutant | Commandes de base, automatisation (en développement) |
 | **Python** | Débutant | Configuration, variables d'environnement, scripts d'automatisation |
 | **Standards projet** | Tous niveaux | Structure de répertoires, conventions de nommage, fichiers essentiels |
 
 ---
 
-## 🚀 Démarrage rapide
-
-<!-- 
-Cette section permet de démarrer en < 5 minutes.
-Fournissez des commandes copy-paste qui fonctionnent.
-Testez-les avant de les publier.
--->
-
-### Prérequis
-
-Avant de commencer, assurez-vous d'avoir installé :
-
-- **Git** : [Télécharger ici](https://git-scm.com/) (Windows, macOS, Linux)
-- **VS Code** (recommandé) : [Télécharger ici](https://code.visualstudio.com/)
-- **Python 3.8+** (optionnel, pour notebooks) : [Télécharger ici](https://www.python.org/)
-
-<!--
-CONSEIL : Indiquez les versions minimales requises et testées.
-Exemple : "Git 2.30+, VS Code 1.70+, Python 3.8+"
--->
-
-### Installation
-
-#### Étape 1 : Cloner le dépôt
-
-```powershell
-# Cloner via HTTPS
-git clone https://github.com/WyloW2Ricard0/Enseignement.git
-
-# Ou via SSH (si clé SSH configurée)
-git clone git@github.com:WyloW2Ricard0/Enseignement.git
-
-# Entrer dans le répertoire
-cd Enseignement
-```
-
-#### Étape 2 : Configuration Git (première utilisation)
-
-```powershell
-# Configurer votre identité
-git config --global user.name "Votre Nom"
-git config --global user.email "vous@example.com"
-
-# Configurer l'éditeur par défaut (VS Code)
-git config --global core.editor "code --wait"
-
-# Vérifier la configuration
-git config --list
-```
-
-#### Étape 3 : Installer GitLens (VS Code)
-
-```powershell
-# Via ligne de commande
-code --install-extension eamodio.gitlens
-
-# Ou via l'interface VS Code : Ctrl+Shift+X → rechercher "GitLens"
-```
-
-#### Étape 4 : Explorer le contenu
-
-```powershell
-# Ouvrir le projet dans VS Code
-code .
-
-# Consulter le guide de démarrage Git (notebook interactif)
-code Powershell/Gith/Gith_Demarrage.ipynb
-
-# Lire la documentation GitLens
-code Powershell/Gith/GitLen/README.md
-```
-
-<!--
-CONSEIL : Fournissez des commandes alternatives si l'utilisateur n'a pas VS Code
-ou préfère un autre éditeur (Sublime, Atom, Vim, etc.)
--->
-
-### Vérification de l'installation
-
-```powershell
-# Vérifier que Git est installé
-git --version
-# Sortie attendue : git version 2.x.x
-
-# Vérifier que VS Code est accessible
-code --version
-# Sortie attendue : 1.x.x
-
-# Vérifier que GitLens est installé
-code --list-extensions | Select-String gitlens
-# Sortie attendue : eamodio.gitlens
-```
-
----
-
 ## 📁 Structure du projet
 
-<!-- 
+<!--
 Cette section documente l'organisation du dépôt.
 Utilisez un arbre ASCII ou des listes pour clarté.
 Expliquez le rôle de chaque dossier/fichier principal.
--->
 
-```
-Enseignement/
-├── 📄 README.md                     # Ce fichier — vue d'ensemble du projet
-├── 📄 CODE_OF_CONDUCT.md            # Code de conduite de la communauté
-├── 📄 LICENSE                       # Licence MIT
-├── 📄 .gitignore                    # Fichiers à ignorer par Git
-├── 📄 A.md                          # Cours : Standards de structuration de répertoires
-│
-├── 📂 Powershell/                   # Ressources PowerShell et Git
-│   ├── 📄 Demarage.md               # Guide démarrage PowerShell (WIP)
-│   └── 📂 Gith/                     # Documentation Git complète
-│       ├── 📄 README.md             # Introduction à la gestion de version (VCS)
-│       ├── 📄 Demarrage.md          # Guide pratique Git (installation, config, commandes)
-│       ├── 📄 progit.pdf            # Livre Pro Git (référence externe)
-│       ├── 📓 Gith_Demarrage.ipynb  # Notebook Jupyter interactif pour Git
-│       └── 📂 GitLen/               # Extension GitLens pour VS Code
-│           └── 📄 README.md         # Guide complet GitLens (annotations, blame, etc.)
-│
-└── 📂 Data/                         # Configuration et scripts Python
-    ├── 📄 README.md                 # Documentation du dossier Data
-    └── 🐍 variable.py               # Variables de configuration Git/projet
-```
-
-<!--
 LÉGENDES RECOMMANDÉES :
 📄 Fichier Markdown / texte
 📂 Dossier
@@ -273,9 +144,117 @@ ALTERNATIVES :
 - Générer avec la commande `tree` (Windows/Linux)
 -->
 
+```mermaid
+---
+config:
+  theme: base
+---
+mindmap
+  root{{"🎯 Data
+  Scientist"}}
+    c(("💻 Informatique"))
+      c1))"📱 Langages"((
+        c1a["⚡ Electron.js
+        Node.js"]
+        c1b["📊 Excel
+        VBA"]
+        c1c["📈 Power BI
+        QueryM & DAX"]
+        c1d["🐍 Jupyter
+        Python"]
+        c1e["📊 RStudio"]
+      c2))"🗄️ Stockage"((
+        c2a["🧑 Git"]
+        c2b["🍃 MongoDB
+        NoSQL"]
+        c2c["🐘 PostgreSQL"]
+      c3))"⚙️ Système"((
+        c3a)"☁️ Azure"(
+        c3b["🐙 Docker"]
+        c3c["📧 Formspree"]
+        c3e["📄 LaTex"]
+        c3f["💳 Stripe"]
+        c3g["🔌 Supabase"]
+        c1h["💻 VSCode"]
+    b(("💼 Métier"))
+      b2))"🔒 Cybersécurité"((
+        b2a["🕵️ OSINT"]
+        b2b["⚖️ RGPD"]
+      b2))"💶 Finances"((
+        b2a["📑 Actuariat"]
+        b2b["📒 Bilan"]
+        b2c["📋 Compte
+        Intermédiaire
+        de Gestion"]
+        b2d["🏛️ Plan
+        Comptable
+        Général"]
+        b2e["🏘️ SCPI"]
+      b3))"🚚 Logistique"((
+        b3a["🔮 Prévision"]
+        b3b["⚠️ Risques"]
+      b4))"🌲 Sylviculture"((
+        b4a["📋 Plan
+        Simple de
+        Gestion"]
+        b4b["🗺️ Cartographie
+        QGIS"]
+    a(("📊 Statistiques"))
+      a1))"🤖 Machine learning"((
+        a1a["🌳 Arbre de
+        décision
+        (aléatoire)"]
+        a1b["📈 ARIMA"]
+        a1c["🔵 K-means"]
+        a1d["📉 Régression
+        non linéaire"]
+      a2))"📐 Modélisation"((
+        a2a["📦 Box Plot"]
+        a2b["🫧 Bubble Plot"]
+        a2c["🌿 Dendogram"]
+        a2d["📊 Distribution"]
+        a2e["🔥 Heatmap"]
+        a2f["⏱️ Séries
+        temporelles"]
+      a3))"🧹 Préparation"((
+        a3a["🔁 Duplicates"]
+        a3b["🩹 Imputation"]
+        a3c["❓ Manquantes"]
+        a3d["🚨 Outlier
+        Detection"]
+        a3e["🔄 Transformation"]
+      a4))"📏 Variance"((
+        a4a["🎲 Inférence
+        Bayésienne"]
+        a4b["🔗 Matrice de
+        Corrélation"]
+        a4c("📐 Inférences
+        fréquentistes")
+        a4e["📊 Intervalle de
+        confiance"]
+        a4f["📉 ROC-AUC"]
+        a4g["📏 RMSE"]
+        a4h["🧮 Statistique
+        de base"]
+    d(("🔄 Agility"))
+      d1["🔍 Analyse
+      de Cause
+      Racine"]
+      d2["🏛️ Architecture
+      Hexagonal"]
+      d3["🎨 Design
+      UI/UX"]
+      d4["🏃 Scrum
+      & Merise"]
+      d5["📊 Schéma
+      UML"]
+      d6["🧪 Test
+      Unitaire"]
+```
+
 ## 📖 Documentation
 
-<!-- 
+<!--
 Liste organisée de toute la documentation disponible.
 Groupez par thème et indiquez le niveau de difficulté.
 -->
@@ -287,9 +266,15 @@ Listez les ressources tierces de qualité que vous recommandez.
 Indiquez la langue si ce n'est pas l'anglais.
 -->
 
+- 📘 [Pro Git](https://git-scm.com/book) par Scott Chacon et Ben Straub
+- 🛠️ [Contributor Covenant](https://www.contributor-covenant.org/) pour le modèle de Code de Conduite
+- 🎨 [Awesome README](https://github.com/matiassingers/awesome-readme) pour les bonnes pratiques de README
+- 🔧 [GitKraken](https://www.gitkraken.com/) pour l'extension GitLens
+- 🏫 [GitHub Education](https://education.github.com/) pour les ressources pédagogiques
+
 ## 💻 Utilisation
 
-<!-- 
+<!--
 Cette section montre des exemples concrets d'utilisation.
 Fournissez des cas d'usage courants avec commandes copy-paste.
 -->
@@ -315,7 +300,7 @@ Proposez plusieurs canaux selon les types de demandes.
 
 ### Mainteneur principal
 
-**WyloW2Ricard0**  
+**WyloW2Ricard0**
 - 🐙 GitHub : [@WyloW2Ricard0](https://github.com/WyloW2Ricard0)
 - 📧 Email : wrichard@live.fr
 - 💬 Discussions : [GitHub Discussions](https://github.com/WyloW2Ricard0/Enseignement/discussions) (recommandé pour questions publiques)
@@ -352,12 +337,6 @@ Cela crée de la bonne volonté et encourage la collaboration.
 
 ### Inspirations et ressources
 
-- 📘 [Pro Git](https://git-scm.com/book) par Scott Chacon et Ben Straub
-- 🛠️ [Contributor Covenant](https://www.contributor-covenant.org/) pour le modèle de Code de Conduite
-- 🎨 [Awesome README](https://github.com/matiassingers/awesome-readme) pour les bonnes pratiques de README
-- 🔧 [GitKraken](https://www.gitkraken.com/) pour l'extension GitLens
-- 🏫 [GitHub Education](https://education.github.com/) pour les ressources pédagogiques
-
 ### Contributeurs
 
 <!--
@@ -368,7 +347,6 @@ Ou manuellement :
 Un grand merci à tous les contributeurs qui ont aidé à améliorer ce projet :
 
 <!-- Sera complété au fur et à mesure des contributions -->
-- [@WyloW2Ricard0](https://github.com/WyloW2Ricard0) — Création initiale et maintenance
 
 <!--
 AUTOMATISER AVEC ALL-CONTRIBUTORS :
@@ -379,8 +357,8 @@ Ajoute automatiquement un badge et une table des contributeurs.
 
 ### Soutien
 
-⭐ Si ce projet vous a aidé, n'hésitez pas à lui donner une étoile sur GitHub !  
-🐦 Partagez-le sur les réseaux sociaux pour aider d'autres apprenants.  
+⭐ Si ce projet vous a aidé, n'hésitez pas à lui donner une étoile sur GitHub !
+🐦 Partagez-le sur les réseaux sociaux pour aider d'autres apprenants.
 💬 Laissez un commentaire dans les [Discussions](https://github.com/WyloW2Ricard0/Enseignement/discussions) pour partager votre expérience.
 
 ---
@@ -397,9 +375,11 @@ Section optionnelle pour informations complémentaires.
 
 ### Fréquence de mise à jour
 
+<!--
 - **Contenu :** Mise à jour continue selon les contributions
 - **README :** Révision mensuelle
 - **Dépendances/liens :** Vérification trimestrielle
+-->
 
 ### Compatibilité
 
@@ -411,9 +391,16 @@ Section optionnelle pour informations complémentaires.
 
 ### Versions recommandées
 
-- **Git** : 2.30+ (versions antérieures peuvent fonctionner)
-- **VS Code** : 1.70+ (pour support complet GitLens)
-- **Python** : 3.8+ (pour notebooks)
+<!--
+CONSEIL : Indiquez les versions minimales requises et testées.
+Exemple : "Git 2.30+, VS Code 1.70+, Python 3.8+"
+-->
+
+Avant de commencer, assurez-vous d'avoir installé :
+
+- **Git** : 2.30+ (versions antérieures peuvent fonctionner) [Télécharger ici](https://git-scm.com/)
+- **VS Code** : 1.70+ (pour support complet GitLens) [Télécharger ici](https://code.visualstudio.com/)
+- **Python** : 3.8+ (pour notebooks) [Télécharger ici](https://www.python.org/)
 
 ---
 
@@ -440,7 +427,7 @@ CHECKLIST FINALE AVANT PUBLICATION :
 - [ ] Le CODE_OF_CONDUCT.md existe
 - [ ] .gitignore est configuré
 - [ ] Structure de répertoires correspond à la documentation
-- [ ] Supprimer les commentaires HTML (<!-- -->) en production (ou les garder pour référence)
+- [ ] Supprimer les commentaires HTML en production (ou les garder pour référence)
 
 OUTILS UTILES :
 - Vérificateur de liens : https://github.com/tcort/markdown-link-check

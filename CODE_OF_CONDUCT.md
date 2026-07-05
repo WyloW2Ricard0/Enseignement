@@ -1,11 +1,11 @@
 
 # Code de Conduite — Contributor Covenant
 
-<!-- 
+<!--
 GUIDE D'UTILISATION DE CE DOCUMENT :
 
-Ce Code de Conduite est basé sur le Contributor Covenant (version 2.1), standard reconnu 
-pour les projets open source. Il définit les règles de comportement attendues pour créer 
+Ce Code de Conduite est basé sur le Contributor Covenant (version 2.1), standard reconnu
+pour les projets open source. Il définit les règles de comportement attendues pour créer
 un environnement accueillant, inclusif et respectueux.
 
 POURQUOI UN CODE DE CONDUITE ?
@@ -44,7 +44,7 @@ RESSOURCES :
 
 ## Notre engagement
 
-<!-- 
+<!--
 Cette section établit les valeurs fondamentales et l'objectif du Code de Conduite.
 Elle doit être inspirante et claire sur l'intention de créer un environnement sain.
 -->
@@ -78,7 +78,7 @@ Nous nous engageons à agir et interagir de manière à contribuer à une commun
 
 ## Nos standards
 
-<!-- 
+<!--
 Cette section définit concrètement ce qui est acceptable et ce qui ne l'est pas.
 Elle sert de référence objective en cas de litige.
 -->
@@ -144,6 +144,7 @@ Elle établit leur légitimité à intervenir et les responsabilise.
 Les mainteneurs du projet sont responsables de clarifier et de faire respecter nos standards de comportement acceptable. Ils prendront des mesures correctives appropriées et équitables en réponse à tout comportement qu'ils jugent inapproprié, menaçant, offensant ou nuisible.
 
 Les mainteneurs du projet ont le droit et la responsabilité de :
+
 - Supprimer, modifier ou rejeter les commentaires, commits, code, modifications du wiki, issues et autres contributions qui ne respectent pas ce Code de Conduite
 - Bannir temporairement ou définitivement tout contributeur pour des comportements qu'ils jugent inappropriés, menaçants, offensants ou nuisibles
 
@@ -192,6 +193,7 @@ Elle évite les ambiguïtés sur la juridiction du document.
 Ce Code de Conduite s'applique à la fois :
 
 ### Dans les espaces du projet
+
 - Dépôts GitHub/GitLab (issues, pull requests, discussions)
 - Canaux de communication officiels (Discord, Slack, mailing lists)
 - Documentation et wiki
@@ -199,7 +201,9 @@ Ce Code de Conduite s'applique à la fois :
 - Réseaux sociaux officiels du projet
 
 ### Dans les espaces publics
+
 Lorsqu'un individu représente officiellement le projet ou sa communauté, notamment :
+
 - Utilisation d'une adresse e-mail officielle du projet
 - Publication via un compte de réseau social officiel
 - Participation en tant que représentant désigné lors d'un événement en ligne ou hors ligne
@@ -325,7 +329,7 @@ Les contributeurs qui ne respectent pas ou n'appliquent pas le Code de Conduite 
 **Exemples de conséquences :**
 
 | Gravité | Première infraction | Récidive | Cas grave |
-|---------|---------------------|----------|-----------|
+| --- | --- | --- | --- |
 | **Légère** (langage inapproprié) | Avertissement privé | Avertissement public | Suspension 1 semaine |
 | **Modérée** (harcèlement) | Suspension 1 semaine | Suspension 1 mois | Bannissement permanent |
 | **Grave** (menaces, doxxing) | Suspension 1 mois | Bannissement permanent | Bannissement + signalement aux autorités |
@@ -438,6 +442,7 @@ Incluez des ressources spécifiques à votre pays/région.
 ### Soutien communautaire
 
 Notre communauté dispose également de :
+
 - [CANAL DISCORD/SLACK DÉDIÉ] pour discussions sur le bien-être
 - [PERSONNE DE CONFIANCE] disponible pour écoute sans jugement
 
@@ -456,7 +461,7 @@ Ce Code de Conduite est adapté du [Contributor Covenant](https://www.contributo
 
 Les Directives d'Impact sur la Communauté ont été inspirées par [l'échelle d'application du code de conduite de Mozilla](https://github.com/mozilla/diversity).
 
-Pour obtenir des réponses aux questions courantes sur ce code de conduite, consultez la FAQ à l'adresse https://www.contributor-covenant.org/faq. 
+Pour obtenir des réponses aux questions courantes sur ce code de conduite, consultez la FAQ à l'adresse <https://www.contributor-covenant.org/faq>.
 
 Des traductions sont disponibles à l'adresse https://www.contributor-covenant.org/translations.
 
@@ -510,6 +515,7 @@ Avant de publier ce Code de Conduite :
 ### Formation des modérateurs
 
 Sujets à couvrir :
+
 1. Biais implicites et reconnaissance
 2. Écoute active et empathie
 3. Désescalade de conflits
@@ -519,6 +525,7 @@ Sujets à couvrir :
 ### Révision périodique
 
 Planifier une révision du Code tous les 12 mois :
+
 - Évaluer l'efficacité (nombre d'incidents, résolutions satisfaisantes)
 - Mettre à jour selon les évolutions de la communauté
 - Intégrer les retours d'expérience
@@ -526,7 +533,7 @@ Planifier une révision du Code tous les 12 mois :
 
 ---
 
-**Version de ce document :** 1.0  
-**Dernière mise à jour :** 4 décembre 2025  
-**Mainteneur de ce template :** WyloW2Ricard0  
+**Version de ce document :** 1.0
+**Dernière mise à jour :** 4 décembre 2025
+**Mainteneur de ce template :** WyloW2Ricard0
 **Licence :** CC BY 4.0
