@@ -3,11 +3,10 @@
 Le diagramme d’état (STAT) permet d’identifier ***comment*** un *Intervenants* change d’état en réponse à des événements qui font évoluer le processus.
 
 Un **Etat** représente une situation dans laquelle se trouve un *Intervenants* à un moment donné.
-
-Un **Déclencheurs** représente la raison du passage d’un état à un autre.
+Séparer par un **Déclencheurs** représente la raison du passage d’un état à un autre.
 
 Le STAT est construit apres le SEQ car il suit aussi un ordre chronologique.
-Il permet d’éviter d’oublier les etapes.
+Il permet d’éviter d’oublier les etapes par la recherche des *Etat*.
 
 ## Legende
 

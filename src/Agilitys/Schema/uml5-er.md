@@ -1,3 +1,9 @@
+---
+# Variable
+showMiniToc: false
+permissions: false
+effectiveDate: 2026-07-09
+---
 
 # Entity Relationship
 

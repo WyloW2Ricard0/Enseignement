@@ -8,7 +8,7 @@ Une **ligne de vie** représente l’existence d’un *Intervenants*. ils ont ch
 La **création** signifie qu’un objet ou participant ***apparaît*** pendant l’exécution du scénario.
 La **destruction** signifie que l’objet ou participant ***termine son rôle*** dans le scénario.
 
-Le diagramme *SEQ* est utilisé ici comme représentation des ***cas d’utilisation*** car il met en avant les **convertion** essentiel entre les *Intervenants*, sans perdre la logique grâce à son ordre chronologique.
+Le diagramme *SEQ* est utilisé ici comme représentation des ***cas d’utilisation*** car il met en avant que les **convertion** essentiel entre les *Intervenants*, sans perdre la logique grâce à son ordre chronologique.
 
 ## Legende
 
@@ -33,7 +33,7 @@ Le diagramme *SEQ* est utilisé ici comme représentation des ***cas d’utilisa
 ## Exemple
 
 Cas d'un commerce de pizza qui a decider d'avoir site web pour commander les pizza.
-Vous ette donc embocher pour ameliorer leur site.
+Vous ette donc embocher pour cree leur site.
 
 1. Ajouter tout les *Intervenants*
    - Mettre *actor* si c'est une personne
@@ -49,7 +49,7 @@ Vous ette donc embocher pour ameliorer leur site.
    - Minimizer les fleche
 1. Supprimer les ligne de vie une foit que vous les tiliser plus pour nettoyer.
 
-> Rester dans les grandes ligne, vous aurais la possibilité d'ajouter des pressition dans les autres diagramme.
+> Rester dans les grandes ligne, vous aurais la possibilité d'ajouter des préssition dans les autres diagramme.
 
 Dans le cadre de cette Pizzeria ;
 

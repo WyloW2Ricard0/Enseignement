@@ -2,14 +2,16 @@
 
 Le diagramme de classes (CLASS) permet de transformer l’analyse précédente en ***structure de programmation***.
 
-Contrairement au SEQ, qui montre les échanges, au STAT, qui montre les états, et au FLOW, qui détaille les traitements, le CLASS définit les éléments à coder autour de :
+Dans chaqu'une de ces class on defini les **atribut** qu'il genaire pour fonctioner et les **methode** géré.
+le CLASS définit les éléments à coder autour de :
 
 - L'**Interface** entre un intervenant et le système ;
 - le **Service** qui coordonne une action ou un scénario ;
 - Les **Metier** qui réalise des action ;
 - Les **Element** contenant les données importantes.
 
-Pour une meilleur interabilité les relation sont predefini ;
+Chaqu'une represante une niveau de l'*architecture ognion*, don les *Element* devien des face de *hexagone*
+Pour une meilleur interabilité des relation sont predefini ;
 
 <div align="center">
 
@@ -23,8 +25,6 @@ Service *-- Metier
 ```
 
 </div>
-
-Dans chaqu'une de ces class on defini les **atribut** qu'il genaire pour fonctioner et les **methode** géré.
 
 ## Legende
 
